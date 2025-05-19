@@ -2,6 +2,9 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "../../../i18n/routing";
 import "../globals.css";
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Header/Navbar";
+import { Toaster } from "react-hot-toast";
 export default async function LocaleLayout({
   children,
   params,
@@ -22,7 +25,10 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <Toaster position="top-right" />
+          <Navbar />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -44,7 +44,10 @@
 }
 
 :root {
-  --main: #4caf50;
+  --main: #83c55a;
+  --main-green: #f7fff2;
+  --main-gray: #ebebeb;
+  --gray-footer: #787878;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -261,3 +264,39 @@
   }
 }
 /* End Loading */
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: white;
+  color: green;
+  border-radius: 9999px;
+  width: 50px !important; /* صغرنا الزر نفسه */
+  height: 50px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px !important; /* اختياري لو فيه نص */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 20px !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 12px; /* ✨ ده السهم نفسه */
+  color: green;
+}
+
+.swiper-pagination-bullet {
+  background: white !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--main) !important;
+}
+.slick-prev:before,
+.slick-next:before {
+  content: none !important;
+}

@@ -1,6 +1,41 @@
 {
   "HomePage": {
-    "title": "fr!",
-    "about": "Go to the about page"
+    "Categories": "Catégories",
+    "View All": "Voir tout",
+    "Explore a range of essential tools": "Explorez une gamme d'outils essentiels, y compris des hygromètres, des outils à main, des perceuses rotatives, des ponceuses orbitales et des dégauchisseuses—parfaites pour la précision et l'efficacité.",
+    "add to cart": "Ajouter au panier",
+    "product": "Produits vedettes",
+    "Experience top quality product": "Découvrez des produits de haute qualité et de performance avec notre produit vedette !",
+    "Partners": "Partenaires",
+    "Our trusted partners": "Nos partenaires de confiance garantissent que nous vous proposons les meilleurs produits et services disponibles.",
+    "Brands": "Marques",
+    "Experience top quality Brand": "Découvrez des marques de haute qualité et de performance avec notre produit vedette !",
+    "FQS": "FAQ",
+    "Find answers to common questions": "Trouvez des réponses aux questions courantes sur nos produits, services et politiques. Nous avons tout ce qu'il vous faut !",
+    "Testomenols": "Témoignages",
+    "See what our happy customers": "Découvrez ce que nos clients satisfaits disent de leur expérience avec nos produits.",
+    "Blogs": "Blogs",
+    "Stay updated with Blogs": "Restez à jour avec des informations sur l'industrie, des conseils et les dernières tendances en matière d'outils et d'entretien."
+  },
+  "login": {
+    "aboutUs": "À propos de nous",
+    "aboutUsDescription": "Apprenez-en plus sur nous",
+    "contactUs": "Contactez-nous",
+    "contactUsDescription": "Nous sommes là pour aider",
+    "faq": "FAQ",
+    "faqDescription": "Obtenez toutes les réponses",
+    "title": "Bienvenue pour vous connecter",
+    "subtitle": "Connectez-vous et replongez",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Entrez votre email",
+    "emailInvalid": "L'adresse e-mail est invalide",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "passwordMinLength": "Le mot de passe doit contenir au moins 6 caractères",
+    "forgetPassword": "Mot de passe oublié ?",
+    "signInButton": "Se connecter",
+    "orSignUpWith": "Ou inscrivez-vous avec",
+    "signUpQuestion": "Vous avez déjà un compte ?",
+    "signUpLink": "Inscrivez-vous"
   }
 }

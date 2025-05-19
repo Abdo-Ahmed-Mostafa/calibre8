@@ -1,6 +1,45 @@
 {
   "HomePage": {
-    "title": "en!",
-    "about": "Go to the about page"
+    "Categories": "Categories",
+    "View All": "View All",
+    "Explore a range of essential tools": "Explore a range of essential tools, including hygrometers, hand tools, rotary hammers, orbital sanders, and planers—perfect for precision and efficiency.",
+    "add to cart": "Add To Cart",
+    "product": "Featured Products",
+    "Experience top quality product": "Experience top quality and performance with our featured product!",
+    "Partners": "Partners",
+    "Our trusted partners": "Our trusted partners ensure we bring you the best products and services available.",
+    "Brands": "Brands",
+    "Experience top quality Brand": "Experience top quality and performance with our featured product!",
+    "FQS": "FQS",
+    "Find answers to common questions": "Find answers to common questions about our products, services, and policies. We've got you covered!",
+    "Testomenols": "Testomenols",
+    "See what our happy customers": "See what our happy customers have to say about their experience with our products.",
+    "Blogs": "Blogs",
+    "Stay updated with Blogs": "Stay updated with industry insights, tips, and the latest trends in tools and maintenance."
+  },
+  "login": {
+    "aboutUs": "About US",
+    "aboutUsDescription": "Get to know more about us",
+    "contactUs": "Contact US",
+    "contactUsDescription": "We are Here to Help",
+    "faq": "FAQ",
+    "faqDescription": "Get All Answers",
+    "title": "Welcome Back to Sign In",
+    "subtitle": "Log in and dive back in",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter Your Email",
+    "emailInvalid": "Email is invalid",
+    "forgetPassword": "Forget Password?",
+    "signInButton": "Sign In",
+    "orSignUpWith": "Or Sign up With",
+    "signUpQuestion": "Already have account?",
+    "signUpLink": "Sign up",
+    "passwordMinLength": "Password must be at least 2 characters"
+  },
+  "from": {
+    "email": "Email",
+    "Enter Your Email": "Enter Your Email",
+    "Password": "Password",
+    "Enter Your Password": "Enter Your Password"
   }
 }
