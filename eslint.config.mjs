@@ -15,6 +15,8 @@ const eslintConfig = [
   // هنا تضيف قواعد جديدة أو تعدل قواعد موجودة
   {
     rules: {
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-page-custom-font": "off",
       "@typescript-eslint/no-explicit-any": "off", // تعطيل تحذير استخدام any
       "@typescript-eslint/no-unused-vars": [
         "warn",

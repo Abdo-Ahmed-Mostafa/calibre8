@@ -34,14 +34,14 @@ const PartnersSwiper = async () => {
                 <div key={partner.id || index} className="px-2 my-8">
                   <Link href={partner?.link} target="_blank">
                     <Image
-                      src={"/FlukeTest.png"}
+                      src={partner?.image}
                       width={302}
                       height={238}
                       alt="asd"
                     />
                   </Link>
                   <h2 className="text-center text-[20px] font-semibold line-clamp-1">
-                    {partner?.title}
+                    {partner?.name}
                   </h2>
                 </div>
               ))}

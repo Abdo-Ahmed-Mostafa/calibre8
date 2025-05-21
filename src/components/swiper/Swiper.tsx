@@ -31,7 +31,6 @@ export default function ReusableSwiper({
   spaceBetween = 10,
   pagination = true,
   breakpoints,
-  className = "",
 }: ReusableSwiperProps) {
   return (
     <Swiper

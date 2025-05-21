@@ -3,37 +3,8 @@ import { useTranslations } from "next-intl";
 import ReusableCarousel from "../ReusableCarousel/ReusableCarousel";
 import Image from "next/image";
 import HeaderSectionHome from "./HeaderSectionHome";
-import Link from "next/link";
 import ViewAllButton from "./ViewAllButton";
 import DataFetcher from "../DataFetcher";
-
-const categories = [
-  {
-    title: "Humidimeter",
-    description: "3 products",
-    image: "/humidimeter.png",
-  },
-  {
-    title: "Parameters",
-    description: "3 products",
-    image: "/parameters.png",
-  },
-  {
-    title: "Handtools",
-    description: "3 products",
-    image: "/handtools.png",
-  },
-  {
-    title: "Rotary Hammers",
-    description: "3 products",
-    image: "/rotary.png",
-  },
-  {
-    title: "Routers",
-    description: "3 products",
-    image: "/routers.png",
-  },
-];
 
 export default function CategoriesSection() {
   const t = useTranslations();
@@ -59,7 +30,7 @@ export default function CategoriesSection() {
                       <div className="bg-white shadow-md   min-h-[130px] max-h-[140px] mb-4 relative">
                         <Image
                           src={card?.image}
-                          alt={card?.title}
+                          alt={card?.title || "test"}
                           fill
                           className="object-contain"
                           sizes="(max-width: 768px) 100vw, 50vw"

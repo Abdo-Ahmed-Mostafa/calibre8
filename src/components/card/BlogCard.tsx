@@ -47,7 +47,7 @@ const BlogCard = ({ blog }: any) => {
       {/* التاريخ */}
       <div className="font-bold absolute text-sm -mt-4 right-3">
         <h1 className="bg-[var(--main)] text-[12px] sm:text-[14px] font-normal text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md">
-          {formatDateToCustom(blog?.created_at)}
+          {formatDateToCustom(blog?.date)}
         </h1>
       </div>
 
@@ -74,11 +74,11 @@ const BlogCard = ({ blog }: any) => {
                 className="!w-[32px] !h-[32px] object-cover"
               />
             </div>
-            <span className="font-bold text-sm">{blog?.author_name}</span>
+            <span className="font-bold text-sm">{blog?.author?.name}</span>
           </div>
           {/* الفئة */}
           <div className="bg-[var(--main)] text-white px-3 py-1 text-xs font-semibold mr-4">
-            {blog?.sub_category}
+            {blog?.sub_category?.name}
           </div>
         </div>
       </div>

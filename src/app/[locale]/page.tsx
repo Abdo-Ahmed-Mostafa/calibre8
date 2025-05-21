@@ -1,4 +1,4 @@
-import "../globals.css";
+// import "./globals.css";
 
 import AdsSwiper from "@/components/home/AdsSwiper";
 import CategoriesSwiper from "@/components/home/CategoriesSwiper";

@@ -3,7 +3,6 @@ import { forwardRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const InputWithIcon = forwardRef<HTMLInputElement, any>(
   (
     {
@@ -69,5 +68,6 @@ const InputWithIcon = forwardRef<HTMLInputElement, any>(
     );
   }
 );
+InputWithIcon.displayName = "InputWithIcon";
 
 export default InputWithIcon;

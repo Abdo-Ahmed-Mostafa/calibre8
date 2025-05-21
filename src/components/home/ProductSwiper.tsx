@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslations } from "next-intl";
 import ReusableCarousel from "../ReusableCarousel/ReusableCarousel";
 // import Image from "next/image";
 import HeaderSectionHome from "./HeaderSectionHome";

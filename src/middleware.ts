@@ -17,22 +17,51 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${redirectLocale}`, request.url));
   }
 
-  // حاول تجيب اللغة من الكوكي
-  const localeFromCookie = request.cookies.get("NEXT_LOCALE")?.value;
+  // تحقق من تسجيل الدخول (مثال: كوكي اسمها 'token')
+  const token = request.cookies.get("token")?.value;
 
-  // شغل الـ intlMiddleware
+  // منع الدخول لصفحة profile لو مش مسجل دخول
+  if (pathname.includes("/profile") && !token) {
+    return NextResponse.redirect(
+      new URL(`/${routing.defaultLocale}/login`, request.url)
+    );
+  }
+
+  // لو مسجل دخول، امنع دخول صفحات login, register, otp
+  const authPages = ["/login", "/register", "/otp"];
+  if (
+    token &&
+    authPages.some((page) =>
+      pathname.startsWith(`/${routing.defaultLocale}${page}`)
+    )
+  ) {
+    // لو مستخدم مسجل دخول بيحاول يدخل صفحة تسجيل الدخول أو التسجيل أو otp
+    // نعيد توجيهه للصفحة الرئيسية أو profile
+    return NextResponse.redirect(
+      new URL(`/${routing.defaultLocale}/`, request.url)
+    );
+  }
+
+  // تابع الـ intlMiddleware
   const response = await intlMiddleware(request);
 
-  // حدد اللغة: لو الكوكي موجودة خذها، وإلا خد اللي في URL أو default
+  const localeFromCookie = request.cookies.get("NEXT_LOCALE")?.value;
+
   const locale =
     localeFromCookie || request.nextUrl.locale || routing.defaultLocale;
 
-  // ضيف الهيدر
   response.headers.set("x-nextjs-locale", locale);
 
   return response;
 }
 
 export const config = {
-  matcher: ["/", "/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: [
+    "/",
+    "/profile",
+    "/login",
+    "/register",
+    "/otp",
+    "/((?!api|_next|_vercel|.*\\..*).*)",
+  ],
 };
