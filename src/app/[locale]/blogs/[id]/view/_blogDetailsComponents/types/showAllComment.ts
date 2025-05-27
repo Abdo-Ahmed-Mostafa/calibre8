@@ -1,0 +1,26 @@
+export type showAllTypes = {
+  openReplyMenuId: any;
+  replyingToReplyId: any;
+  setOpenReplyMenuId: any;
+  setReplyingToReplyId: any;
+  setEditingReplyId: any;
+  editingReplyId: any;
+  id: any;
+  isAuth: any;
+  me: any;
+  setShowAllComments: any;
+  setOpenLikeList: any;
+  showAllComments: any;
+  page: any;
+  setPage: any;
+  paginition: any;
+  editedContent: any;
+  editingCommentId: any;
+  fourComments: any;
+  getBlogComments: any;
+  setEditedContent: any;
+  openReply: any;
+  setEditingCommentId: any;
+  setOpenReplay: any;
+  t: any;
+};

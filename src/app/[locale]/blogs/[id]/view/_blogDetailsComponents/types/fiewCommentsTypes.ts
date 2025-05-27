@@ -1,0 +1,22 @@
+export type fiewTypes = {
+  setReplyingToReplyId: any;
+  setOpenReplyMenuId: any;
+  openReplyMenuId: any;
+  replyingToReplyId: any;
+  editingReplyId: any;
+  setEditingReplyId: any;
+  blogID: any;
+  setOpenLikeList: any;
+  isAuth: any;
+  me: any;
+  showAllComments: any;
+  getBlogComments: any;
+  setEditingCommentId: any;
+  setOpenReplay: any;
+  setEditedContent: any;
+  editedContent: any;
+  t: any;
+  editingCommentId: any;
+  fourComments: any;
+  openReply: any;
+};

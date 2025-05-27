@@ -1,0 +1,23 @@
+export type commentLayoutType = {
+  openReplyMenuId: any;
+  replyingToReplyId: any;
+  setOpenReplyMenuId: any;
+  setReplyingToReplyId: any;
+  blogId: any;
+  setEditingReplyId: any;
+  editingReplyId: any;
+  setOpenLikeList: any;
+  isAuth: any;
+  me: any;
+  setShowAllComments: any;
+  showAllComments: any;
+  editedContent: any;
+  editingCommentId: any;
+  fourComments: any;
+  setEditedContent: any;
+  openReply: any;
+  getBlogComments: any;
+  setOpenReplay: any;
+  t: any;
+  setEditingCommentId: any;
+};

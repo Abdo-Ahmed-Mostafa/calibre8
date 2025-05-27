@@ -6,12 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ProfilePage = () => {
   const data = useSelector((state: any) => state.profileReducer.profile);
-  console.log("data", data);
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(showProrfileuser());
-  }, []);
+  }, [dispatch]);
   return <div>Welcome : {data?.name}</div>;
 };
 

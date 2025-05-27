@@ -1,0 +1,25 @@
+export type splitFiewComment = {
+  fourComments: any;
+  editingCommentId: any;
+  me: any;
+  loading: any;
+  isAuth: any;
+  handleLike: any;
+  setOpenReplay: any;
+  openReply: any;
+  editedContent: any;
+  handleDelete: any;
+  handleEdit: any;
+  handleUpdateSubmit: any;
+  setEditedContent: any;
+  setOpenLikeList: any;
+  openReplyMenuId: any;
+  getBlogComments: any;
+  replyingToReplyId: any;
+  setOpenReplyMenuId: any;
+  setReplyingToReplyId: any;
+  editingReplyId: any;
+  setEditingReplyId: any;
+  blogID: any;
+  showAllComments: any;
+};

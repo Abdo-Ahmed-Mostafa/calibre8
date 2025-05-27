@@ -4,7 +4,6 @@ import ReusableCarousel from "../ReusableCarousel/ReusableCarousel";
 import HeaderSectionHome from "./HeaderSectionHome";
 // import Link from "next/link";
 import ViewAllButton from "./ViewAllButton";
-import ProductCard from "../card/ProductCard";
 import DataFetcher from "../DataFetcher";
 
 import { getTranslations } from "next-intl/server";
@@ -32,8 +31,8 @@ export default async function ProductSwiper() {
               dots={false}
             >
               {products?.data.map((product: any, index: number) => (
-                <div key={product.id || index} className="px-2">
-                  <ProductCard product={product} />
+                <div key={index} className="px-2">
+                  {/* <ProductCard product={product} /> */}
                 </div>
               ))}
             </ReusableCarousel>

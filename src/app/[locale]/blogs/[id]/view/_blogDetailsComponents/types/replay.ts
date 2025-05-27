@@ -1,0 +1,21 @@
+export type replayTypes = {
+  replyingToReplyId: any;
+  handleDelete: any;
+  setReplyingToReplyId: any;
+  setOpenReplyMenuId: any;
+  openReplyMenuId: any;
+  editingReplyId: any;
+  setEditingReplyId: any;
+  editedContent: any;
+  setEditedContent: any;
+  replies: any[];
+  openReply: any;
+  me: any;
+  BlogId: any;
+  setOpenLikeList: any;
+  getBlogComments: any;
+  isAuth: boolean;
+  loading: boolean;
+  handleLike: any;
+  handleUpdateSubmit: any;
+};
