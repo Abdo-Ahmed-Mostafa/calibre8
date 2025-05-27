@@ -67,6 +67,8 @@ const LoginPage = () => {
       })
       .catch((error) => {
         // if anything went wrong show a toast error
+        console.log("hahah-312", error);
+
         toast.error(error.message);
       })
       .finally(() => {

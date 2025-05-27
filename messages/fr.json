@@ -37,5 +37,28 @@
     "orSignUpWith": "Ou inscrivez-vous avec",
     "signUpQuestion": "Vous avez déjà un compte ?",
     "signUpLink": "Inscrivez-vous"
-  }
+  },
+  "blogs": {
+    "Blogs": "Blogs",
+    "Category": "Catégorie",
+    "Sub Category": "Sous-catégorie",
+    "Apply Filter": "Appliquer le filtre",
+    "blogTITELMESSAGE": "Restez informé des perspectives du secteur, des conseils et des dernières tendances en matière d'outils et de maintenance."
+  },
+  "All Comments": "Tous les commentaires",
+  "back": "Retour",
+  "Comments": "Commentaires",
+  "view all": "Voir tout",
+  "comment has been deleted": "Le commentaire a été supprimé",
+  "you are not auth": "Vous n'êtes pas autorisé",
+  "comment has been edited successfully": "Le commentaire a été modifié avec succès",
+  "comment like removed": "J'aime retiré du commentaire",
+  "comment liked successfully": "Commentaire aimé avec succès",
+  "Write something first!": "Écrivez quelque chose d'abord !",
+  "commentCreatedSuccefully": "Commentaire créé avec succès",
+  "commentCreatedUnSuccefully": "Échec de la création du commentaire",
+  "Write your comment": "Écrivez votre commentaire",
+  "update your comment": "Mettre à jour votre commentaire",
+  "Update": "Mettre à jour",
+  "Delete": "Supprimer"
 }

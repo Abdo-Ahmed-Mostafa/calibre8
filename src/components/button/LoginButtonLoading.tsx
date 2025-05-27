@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Loading from "./Loading";
 const LoginButtonLoading = ({ title, loading, url }: any) => {
   return (
     <button
@@ -10,32 +11,13 @@ const LoginButtonLoading = ({ title, loading, url }: any) => {
       }`}
     >
       {loading ? (
-        <div className="spinner"></div>
+        <Loading />
       ) : (
         <>
           {title}
           <Image src={url} alt="LoginUser" width={26} height={21} />
         </>
       )}
-      <style jsx>{`
-        .spinner {
-          border: 4px solid rgba(255, 255, 255, 0.3);
-          border-top: 4px solid white;
-          border-radius: 50%;
-          width: 24px;
-          height: 24px;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
     </button>
   );
 };

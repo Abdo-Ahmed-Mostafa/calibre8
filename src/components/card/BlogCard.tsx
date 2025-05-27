@@ -1,43 +1,32 @@
+"use client";
 import { formatDateToCustom } from "@/lib/Hook/formatDateToCustom";
+import { useMainHook } from "@/lib/Hook/useMainHook";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import React from "react";
 import { FaHeart } from "react-icons/fa";
 
 const BlogCard = ({ blog }: any) => {
+  const { router } = useMainHook();
+  const locale = useLocale();
+
   return (
-    <div
-      className="
-    w-full
-    max-w-[95%]
-    sm:max-w-[90%]
-    md:max-w-[360px]
-    lg:max-w-[500px]
-    h-[420px]       /* ارتفاع الموبايل */
-    sm:h-[460px]    /* ارتفاع التابلت */
-    lg:h-[440px]    /* ارتفاع الشاشات الكبيرة */
-    rounded-lg
-    shadow-md
-    overflow-hidden
-    font-sans
-    bg-white
-    relative
-    text-gray-800
-    mx-auto
-    flex
-    flex-col
-  "
-    >
-      {/* صورة التاجن */}
-      <div className="relative w-full h-[200px] sm:h-[250px] md:h-[220px]">
+    <div className="bg-[#f7fff2] col-span-2 lg:col-span-1   rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
+      {/* الصورة العلوية */}
+      <div
+        className="relative h-[280px] w-full cursor-pointer"
+        onClick={() => router.push(`/${locale}/blogs/${blog?.id}/view`)}
+      >
         <Image
           src={blog?.image}
           alt="Blog Image"
           fill
-          priority={true}
-          className="object-cover"
+          priority
+          className="w-full h-full object-cover"
         />
+        {/* زر القلب */}
         <div
-          className="absolute top-2.5 right-2.5 bg-[#e6faf0e6] rounded-full flex justify-center items-center cursor-pointer"
+          className="absolute top-2.5 right-2.5 bg-[#e6faf0e6] rounded-full flex justify-center items-center z-10"
           style={{ width: 30, height: 30 }}
         >
           <FaHeart className="w-4 h-4 text-[var(--main)]" />
@@ -45,39 +34,42 @@ const BlogCard = ({ blog }: any) => {
       </div>
 
       {/* التاريخ */}
-      <div className="font-bold absolute text-sm -mt-4 right-3">
-        <h1 className="bg-[var(--main)] text-[12px] sm:text-[14px] font-normal text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md">
+      <div className="px-4 relative">
+        <span className="bg-[var(--main)] text-white text-[12px] px-3 py-1.5 rounded-md inline-block absolute right-4 -top-5">
           {formatDateToCustom(blog?.date)}
-        </h1>
+        </span>
       </div>
 
-      {/* المحتوى النصي */}
-      <div className="flex flex-col justify-between flex-grow pt-4">
+      {/* النص */}
+      <div className="px-4 pt-3 pb-4 flex flex-col justify-between relative ">
         <div>
-          <h3 className="mx-4 mb-2 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-black">
+          <h3 className="text-[24px] text-[#071200] font-[600]  mb-2 line-clamp-1">
             {blog?.title}
           </h3>
-          <p className="text-sm mx-4 line-clamp-3 mb-3 text-gray-600 leading-relaxed">
+          <p className="text-[14px] font-[400] text-[#787878] leading-relaxed line-clamp-3">
             {blog?.description}
           </p>
         </div>
 
-        <div className="flex justify-between flex-wrap items-center mt-auto pb-4">
-          {/* معلومات الكاتب */}
-          <div className="flex px-4 items-center gap-2 mb-2 sm:mb-0">
+        <div className="flex justify-between items-center mt-5 flex-col sm:flex-row gap-3">
+          {/* الكاتب */}
+          <div className="flex items-center gap-2">
             <div className="relative w-8 h-8 rounded-full overflow-hidden">
               <Image
-                src={blog?.author_image}
-                priority={true}
+                src={"/icons/amercaFlag.svg"}
+                priority
                 fill
                 alt="avatarBlog"
-                className="!w-[32px] !h-[32px] object-cover"
+                className="object-cover"
               />
             </div>
-            <span className="font-bold text-sm">{blog?.author?.name}</span>
+            <span className="text-[#071200] text-[18px] font-[600]">
+              {blog?.author?.name}
+            </span>
           </div>
+
           {/* الفئة */}
-          <div className="bg-[var(--main)] text-white px-3 py-1 text-xs font-semibold mr-4">
+          <div className="bg-[var(--main)] text-white px-3 py-1 text-xs font-semibold line-clamp-1 w-[166px] rounded sm:absolute right-0">
             {blog?.sub_category?.name}
           </div>
         </div>

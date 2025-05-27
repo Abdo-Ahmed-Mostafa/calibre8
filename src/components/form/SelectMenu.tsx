@@ -10,8 +10,8 @@ const SelectMenu = ({
   placeholder,
   className,
   options,
-  url,
-}: {
+}: // url,
+{
   placeholder: string;
   className?: string;
   options?: any;

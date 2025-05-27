@@ -2,6 +2,7 @@ import IconCircle from "./IconCircle";
 import { Bell, Heart, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import Image from "next/image";
 
 type UserType = {
   name: string;
@@ -26,8 +27,10 @@ const NavIcons = ({
         // لو مسجل دخول، عرض صورة البروفايل وروابطها لصفحة profile
         <Link href={`/${locale}/profile`}>
           {user.avatar ? (
-            <img
+            <Image
               src={user.avatar}
+              width={32}
+              height={32}
               alt={user.name}
               className="w-8 h-8 rounded-full object-cover cursor-pointer"
             />

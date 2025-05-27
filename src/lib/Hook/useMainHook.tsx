@@ -1,7 +1,5 @@
 "use client";
-
 import { useMemo, useState } from "react";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useDispatch } from "react-redux";
