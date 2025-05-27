@@ -12,8 +12,11 @@ const BlogTags = ({ tags }: { tags: [] }) => {
       </h1>
       <span>:</span>
       <div className="flex items-center flex-wrap gap-[12px] ps-5 ">
-        {tags?.map((tag: string) => (
-          <div className="bg-[#83C55A] py-1 px-2 sm:px-5 text-white rounded-[16px]">
+        {tags?.map((tag: string, index: number) => (
+          <div
+            className="bg-[#83C55A] py-1 px-2 sm:px-5 text-white rounded-[16px]"
+            key={index}
+          >
             {tag}
           </div>
         ))}

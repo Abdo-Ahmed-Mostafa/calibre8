@@ -1,6 +1,6 @@
 "use client";
 import axiosInstance from "@/lib/axios/axiosInstance";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import HeaderBlogs from "./HeaderBlogs";
 import BlogBody from "./BlogBody";
 import BlogFooter from "./BlogFooter";
@@ -20,26 +20,22 @@ const Clientblog = () => {
   const [page, setPage] = useState(1);
   console.log("hphphp-312", page);
 
-  const getBlogs = () => {
+  const getBlogs = useCallback(() => {
     const params = new URLSearchParams();
 
-    // if (author_id) params.append("author_id", author_id);
     if (category) params.append("category", category);
     if (subCategory) params.append("subCategory", subCategory);
     if (page) params.append("page", page.toString());
 
-    axiosInstance
-      .get(
-        `/api/public/blogs${
-          params.toString()
-            ? `?${params.toString()}&per_page=6&page=${page}`
-            : ""
-        }`
-      )
-      .then((response) => {
-        setBolgs(response?.data);
-      });
-  };
+    const queryString = params.toString();
+    const url = `/api/public/blogs${
+      queryString ? `?${queryString}&per_page=6&page=${page}` : ""
+    }`;
+
+    axiosInstance.get(url).then((response) => {
+      setBolgs(response?.data);
+    });
+  }, [category, subCategory, page]);
   const handleSearch = () => {
     if (handle.trim() === "") {
       getBlogs();
@@ -69,7 +65,7 @@ const Clientblog = () => {
           subCategory={subCategory}
           category={category}
           blogs={blogs?.data}
-          onApplyFilter={getBlogs} // ✅
+          onApplyFilter={getBlogs}
         />
         <BlogFooter
           page={page}

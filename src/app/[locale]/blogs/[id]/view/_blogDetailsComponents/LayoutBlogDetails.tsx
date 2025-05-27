@@ -6,10 +6,13 @@ import ShowBlogDetails from "./ShowBlogDetails";
 import ShowAllComments from "./comments/ShowAllComments";
 import { useMainHook } from "@/lib/Hook/useMainHook";
 import CommentList from "./comments/commentsComponents/CommentList";
-const LayoutBlogDetails = ({ id }: { id: string | number }) => {
+import { usePathname } from "next/navigation";
+const LayoutBlogDetails = () => {
   const [blog, setBlog] = useState<any>({});
   const [publishedDate, setPublishedDate] = useState<string>("");
   const [publishedTime, setPublishedTime] = useState<string>("");
+  const pathname = usePathname();
+  const id = pathname.split("/")[3];
 
   const [showAllComments, setShowAllComments] = useState(false);
   const me = useSelector((state: any) => state.profileReducer.profile);

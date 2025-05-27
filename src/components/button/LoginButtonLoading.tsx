@@ -11,7 +11,7 @@ const LoginButtonLoading = ({ title, loading, url }: any) => {
       }`}
     >
       {loading ? (
-        <Loading />
+        <Loading color={"#ffffff"} />
       ) : (
         <>
           {title}

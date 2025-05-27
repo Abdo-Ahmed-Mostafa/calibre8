@@ -14,7 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { X } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axiosInstance from "@/lib/axios/axiosInstance";
 import { useMainHook } from "@/lib/Hook/useMainHook";
 import Image from "next/image";
@@ -38,17 +38,18 @@ export default function CommentLikesDialog({
   const { t } = useMainHook();
   const [isLoading, setIsLoading] = useState(true);
 
-  const getLikesList = () => {
+  const getLikesList = useCallback(() => {
     setIsLoading(true);
     axiosInstance.get(`/api/public/comment_like/${commentId}`).then((res) => {
       setList(res?.data?.data || []);
       setIsLoading(false);
     });
-  };
-
+  }, [commentId]);
   useEffect(() => {
-    open && getLikesList();
-  }, [open, commentId]);
+    if (open) {
+      getLikesList();
+    }
+  }, [open, commentId, getLikesList]);
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
