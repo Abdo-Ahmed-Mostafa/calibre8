@@ -173,5 +173,6 @@ export const useMainHook = () => {
     filterDuplicates,
     appendToFormData,
     handleMultiLangInput,
+    locale,
   };
 };

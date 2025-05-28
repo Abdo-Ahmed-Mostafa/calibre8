@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../axios/axiosInstance";
 
-export const showProrfileuser = createAsyncThunk(
-  "showProrfileuser",
+export const showProfileUser = createAsyncThunk(
+  "showProfileUser",
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get("/auth/profile");
@@ -20,7 +20,7 @@ const profileSlice = createSlice({
     profile: null,
   },
   extraReducers: (builder) => {
-    builder.addCase(showProrfileuser.fulfilled, (state, action) => {
+    builder.addCase(showProfileUser.fulfilled, (state, action) => {
       state.profile = action.payload?.data;
     });
   },
