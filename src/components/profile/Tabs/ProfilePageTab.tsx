@@ -1,9 +1,7 @@
 "use client";
 import { showProfileUser } from "@/lib/redux/profileSlice";
 import { AppDispatch } from "@/lib/redux/store";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { FiEdit } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import ViewProfile from "./ViewProfile";
 import EditProfile from "./EditProfile";
