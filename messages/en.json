@@ -68,5 +68,28 @@
     "genderRequired": "Gender is required",
     "addressRequired": "Address is required",
     "passwordsDoNotMatch": "Passwords do not match"
-  }
+  },
+  "blogs": {
+    "Blogs": "Blogs",
+    "Category": "Category",
+    "Sub Category": "Sub Category",
+    "Apply Filter": "Apply Filter",
+    "blogTITELMESSAGE": "Stay updated with industry insights, tips, and the latest trends in tools and maintenance."
+  },
+  "All Comments": "All Comments",
+  "back": "Back",
+  "Comments": "Comments",
+  "view all": "View All",
+  "comment has been deleted": "Comment has been deleted",
+  "you are not auth": "You are not authorized",
+  "comment has been edited successfully": "Comment has been edited successfully",
+  "comment like removed": "Comment like removed",
+  "comment liked successfully": "Comment liked successfully",
+  "Write something first!": "Write something first!",
+  "commentCreatedSuccefully": "Comment created successfully",
+  "commentCreatedUnSuccefully": "Failed to create comment",
+  "Write your comment": "Write your comment",
+  "update your comment": "Update your comment",
+  "Update": "Update",
+  "Delete": "Delete"
 }

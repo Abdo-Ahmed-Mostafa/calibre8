@@ -30,7 +30,7 @@ const Navbar = () => {
     dispatch(showProfileUser());
     dispatch(getAllBrands());
     dispatch(getAllCategory());
-  }, []);
+  }, [dispatch]);
   console.log("proprofile", brand);
 
   return (

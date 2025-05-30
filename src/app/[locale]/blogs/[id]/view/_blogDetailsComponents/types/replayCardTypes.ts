@@ -1,0 +1,23 @@
+export type ReplayCardTypes = {
+  isOwner: any;
+  reply: any;
+  t: any;
+  setEditingReplyId: any;
+  setEditedContent: any;
+  setOpenReplyMenuId: any;
+  handleDelete: any;
+  editingReplyId: any;
+  handleLike: any;
+  handleUpdateSubmit: any;
+  openReply: any;
+  editedContent: any;
+  loading: any;
+  isAuth: any;
+  setReplyingToReplyId: any;
+  replyingToReplyId: any;
+  openReplyMenuId: any;
+  getBlogComments: any;
+  BlogId: any;
+  setOpenLikeList: any;
+  me: any;
+};

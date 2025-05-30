@@ -1,7 +1,5 @@
 "use client";
-
 import { useMemo, useState } from "react";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useDispatch } from "react-redux";
@@ -14,6 +12,13 @@ export const useMainHook = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const dispatch = useDispatch<AppDispatch>();
+  function createImageFromObject(obj: any) {
+    if (!obj) {
+      throw new Error("Object is required");
+    }
+    const imageUrl = URL.createObjectURL(obj);
+    return imageUrl;
+  }
 
   const isArabic = useMemo(() => locale === "ar", [locale]);
 
@@ -174,5 +179,6 @@ export const useMainHook = () => {
     appendToFormData,
     handleMultiLangInput,
     locale,
+    createImageFromObject,
   };
 };
