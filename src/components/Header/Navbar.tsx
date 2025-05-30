@@ -10,7 +10,7 @@ import NavIcons from "./NavIcons";
 import MobileMenu from "./MobileMenu";
 import IconCircle from "./IconCircle";
 import { useDispatch, useSelector } from "react-redux";
-import { showProrfileuser } from "@/lib/redux/profileSlice";
+import { showProfileUser } from "@/lib/redux/profileSlice";
 import { usePathname } from "next/navigation";
 import SelectMenu from "../form/SelectMenu";
 import { getAllBrands, getAllCategory } from "@/lib/selectMenu/SelectMenu";
@@ -27,7 +27,7 @@ const Navbar = () => {
     (state: any) => state.selectMenuSlice
   );
   useEffect(() => {
-    dispatch(showProrfileuser());
+    dispatch(showProfileUser());
     dispatch(getAllBrands());
     dispatch(getAllCategory());
   }, [dispatch]);

@@ -32,15 +32,42 @@
     "forgetPassword": "Forget Password?",
     "signInButton": "Sign In",
     "orSignUpWith": "Or Sign up With",
-    "signUpQuestion": "Already have account?",
+    "signUpQuestion": "Already have account ?",
     "signUpLink": "Sign up",
-    "passwordMinLength": "Password must be at least 2 characters"
+    "login": "login",
+    "passwordMinLength": "Password must be at least 2 characters",
+    "submit": "submit"
   },
-  "from": {
+  "signUp": {
+    "title": "Welcome to Sign UP ",
+    "subtitle": "Create your account and get started!",
+    "Resend Code": "Resend Code",
+    "The code has been resend": "The code has been resend"
+  },
+  "form": {
     "email": "Email",
+    "required": "required",
     "Enter Your Email": "Enter Your Email",
     "Password": "Password",
-    "Enter Your Password": "Enter Your Password"
+    "Enter Your Password": "Enter Your Password",
+    "First Name": "First Name",
+    "Last Name": "Last Name",
+    "Phone Number": "Phone Number",
+    "Confirm Password": "Confirm Password",
+    "Gender": "Gender",
+    "Address": "Address",
+    "Enter Your First Name": "Enter your first name",
+    "Enter Your Last Name": "Enter your last name",
+    "Enter Your Phone Number": "Enter your phone number",
+    "Confirm Your Password": "Confirm your password",
+    "Enter Your Gender": "Enter your gender",
+    "Enter Your Address": "Enter your address",
+    "firstNameRequired": "First name is required",
+    "lastNameRequired": "Last name is required",
+    "phoneNumberInvalid": "Phone number is invalid",
+    "genderRequired": "Gender is required",
+    "addressRequired": "Address is required",
+    "passwordsDoNotMatch": "Passwords do not match"
   },
   "blogs": {
     "Blogs": "Blogs",

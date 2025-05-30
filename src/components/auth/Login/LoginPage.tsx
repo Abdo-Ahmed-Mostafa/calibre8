@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import BottomInfoCards from "./BottomInfoCards";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple, FaFacebookF } from "react-icons/fa";
 import InputWithIcon from "@/components/form/InputWithIcon";
@@ -8,20 +9,20 @@ import { CiMail, CiUnlock } from "react-icons/ci";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import LoginButtonLoading from "../button/LoginButtonLoading";
+import LoginButtonLoading from "../../button/LoginButtonLoading";
 import { showProfileUser } from "@/lib/redux/profileSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/lib/redux/store";
-import BottomInfoCards from "../auth/Login/BottomInfoCards";
 
 const LoginPage = () => {
   const t = useTranslations();
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
+  const locale = useLocale();
   const [loading, setLoading] = useState(false);
   const loginSchema = z.object({
     email: z.string().email(t("login.emailInvalid")),
@@ -45,7 +46,7 @@ const LoginPage = () => {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ ...data, type: 2 }),
+      body: JSON.stringify(data),
     })
       .then(async (res) => {
         const data = await res.json();
@@ -67,8 +68,6 @@ const LoginPage = () => {
       })
       .catch((error) => {
         // if anything went wrong show a toast error
-        console.log("hahah-312", error);
-
         toast.error(error.message);
       })
       .finally(() => {
@@ -78,10 +77,10 @@ const LoginPage = () => {
 
   return (
     <div>
-      <div className="min-h-screen flex flex-col justify-center items-center bg-[var(--main-green)] p-4">
+      <div className=" flex flex-col justify-center pt-8 items-center bg-[var(--main-green)] p-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white rounded-lg w-[90%] p-8 border-1"
+          className="bg-white rounded-2xl w-[90%] p-8 border-1"
         >
           <h1 className="text-[20px] lg:text-[40px] font-bold text-center mb-1">
             {t("login.title")}
@@ -94,7 +93,7 @@ const LoginPage = () => {
             label={t("from.email")}
             isRequired
             placeholder={t("from.Enter Your Email")}
-            icon={<CiMail className="text-white text-[24px]" />}
+            icon={<CiMail className="text-white text-[30px]" />}
             {...register("email")}
             error={errors.email?.message}
           />
@@ -105,7 +104,7 @@ const LoginPage = () => {
             type="password"
             placeholder={t("from.Enter Your Password")}
             icon={
-              <CiUnlock className="text-white text-[24px] transform scale-x-[-1]" />
+              <CiUnlock className="text-white text-[30px] transform scale-x-[-1]" />
             }
             {...register("password")}
             error={errors.password?.message}
@@ -126,7 +125,7 @@ const LoginPage = () => {
             url="/icons/loginUser.svg"
           />
 
-          <p className="text-center text-[14px] font-normal mt-6 mb-3">
+          <p className="text-center text-md font-semibold mt-6 mb-3">
             {t("login.orSignUpWith")}
           </p>
           <div className="flex justify-center gap-6 mb-4">
@@ -147,9 +146,13 @@ const LoginPage = () => {
             </button>
           </div>
 
-          <p className="text-center text-sm">
+          <p className="text-center font-semibold text-md">
             {t("login.signUpQuestion")}
-            <Link href="#" className="text-green-600 hover:underline">
+            <Link
+              href={`/${locale}/signup`}
+              className="text-[var(--main)] hover:underline"
+            >
+              {" "}
               {t("login.signUpLink")}
             </Link>
           </p>

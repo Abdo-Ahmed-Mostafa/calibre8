@@ -27,7 +27,7 @@ export default function HomePage() {
         <PartnersSwiper />
       </div>
       <div className="bg-[var(--main-green)] py-16   px-6">
-        <ProductSwiper />
+        {/* <ProductSwiper /> */}
       </div>
       <div className="bg-[var(--main-green)] py-16   px-6">
         {/* <BlogCard /> */}

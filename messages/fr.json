@@ -38,6 +38,36 @@
     "signUpQuestion": "Vous avez déjà un compte ?",
     "signUpLink": "Inscrivez-vous"
   },
+  "signup": {
+    "title": "Bienvenue à l'inscription",
+    "subtitle": "Créez votre compte et commencez !",
+    "submit": "submit"
+  },
+  "form": {
+    "email": "E-mail",
+    "required": "required",
+    "Enter Your Email": "Entrez votre e-mail",
+    "Password": "Mot de passe",
+    "Enter Your Password": "Entrez votre mot de passe",
+    "First Name": "Prénom",
+    "Last Name": "Nom de famille",
+    "Phone Number": "Numéro de téléphone",
+    "Confirm Password": "Confirmer le mot de passe",
+    "Gender": "Genre",
+    "Address": "Adresse",
+    "Enter Your First Name": "Entrez votre prénom",
+    "Enter Your Last Name": "Entrez votre nom de famille",
+    "Enter Your Phone Number": "Entrez votre numéro de téléphone",
+    "Confirm Your Password": "Confirmez votre mot de passe",
+    "Enter Your Gender": "Entrez votre genre",
+    "Enter Your Address": "Entrez votre adresse",
+    "firstNameRequired": "Le prénom est requis",
+    "lastNameRequired": "Le nom de famille est requis",
+    "phoneNumberInvalid": "Le numéro de téléphone est invalide",
+    "genderRequired": "Le genre est requis",
+    "addressRequired": "L'adresse est requise",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas"
+  },
   "blogs": {
     "Blogs": "Blogs",
     "Category": "Catégorie",

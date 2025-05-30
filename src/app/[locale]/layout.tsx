@@ -3,6 +3,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "../../../i18n/routing";
 import ClientProvierLayout from "@/lib/provider/ClientProvierLayout";
+import { Toaster } from "react-hot-toast";
 export default async function LocaleLayout({
   children,
   params,
@@ -23,6 +24,7 @@ export default async function LocaleLayout({
       <body cz-shortcut-listen="true">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ClientProvierLayout>{children}</ClientProvierLayout>
+          <Toaster position="top-right" reverseOrder={false} />
         </NextIntlClientProvider>
       </body>
     </html>
