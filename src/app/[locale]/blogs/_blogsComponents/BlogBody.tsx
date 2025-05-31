@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BlogFilter from "./FilterBlogs";
 import BlogCardList from "./BlogContent";
-import EmptyBlogs from "./EmptyBlogs";
+import EmptyPage from "@/components/EmptyPage";
 
 const BlogBody = ({
   openFiler,
@@ -46,7 +46,7 @@ const BlogBody = ({
           onApplyFilter={onApplyFilter}
         />
       )}
-      {blogs?.length > 0 ? <BlogCardList blogData={blogs} /> : <EmptyBlogs />}
+      {blogs?.length > 0 ? <BlogCardList blogData={blogs} /> : <EmptyPage />}
     </div>
   );
 };

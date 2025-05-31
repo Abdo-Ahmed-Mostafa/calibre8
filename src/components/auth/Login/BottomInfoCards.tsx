@@ -8,18 +8,18 @@ const BottomInfoCards = () => {
   const data = [
     {
       icon: "/icons/aboutUsLogin.svg",
-      title: t("login.aboutUs"),
-      description: t("login.aboutUsDescription"),
+      title: t("About US"),
+      description: t("Get to know more about us"),
     },
     {
       icon: "/icons/contactUsLogin.svg",
-      title: t("login.contactUs"),
-      description: t("login.contactUsDescription"),
+      title: t("Contact US"),
+      description: t("We are Here to Help"),
     },
     {
       icon: "/icons/faqsLogin.svg",
-      title: t("login.faq"),
-      description: t("login.faqDescription"),
+      title: t("faq"),
+      description: t("Get All Answers"),
     },
   ];
   return (

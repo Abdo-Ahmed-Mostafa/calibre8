@@ -29,17 +29,16 @@ const SignUpPage = () => {
   const [loading, setLoading] = useState(false);
   const signupSchema = z
     .object({
-      name: z.string().min(1, t("form.firstNameRequired")),
-      lastName: z.string().min(1, t("form.lastNameRequired")),
-      email: z.string().email(t("login.emailInvalid")),
-      phone: z.string().min(10, t("form.phoneNumberInvalid")), // يفضل Regex هنا
-      password: z.string().min(6, t("login.passwordMinLength")),
+      name: z.string().min(1, t("first Name Required")),
+      email: z.string().email(t("email Invalid")),
+      phone: z.string().min(10, t("phone Number Invalid")), // يفضل Regex هنا
+      password: z.string().min(6, t("password Min Length 6")),
       password_confirmation: z.string(),
-      gender: z.string().min(1, t("form.genderRequired")),
-      address: z.string().min(1, t("form.addressRequired")),
+      gender: z.string().min(1, t("gender Required")),
+      address: z.string().min(1, t("address Required")),
     })
     .refine((data) => data.password === data.password_confirmation, {
-      message: t("form.passwordsDoNotMatch"),
+      message: t("passwords Do Not Match"),
       path: ["password_confirmation"],
     });
 
@@ -111,36 +110,27 @@ const SignUpPage = () => {
           className="bg-white rounded-2xl w-[90%] p-8 border-1"
         >
           <h1 className="text-[20px] lg:text-[40px] font-bold text-center mb-1">
-            {t("signUp.title")}
+            {t("Welcome to Sign UP")}
           </h1>
           <p className="text-center text-[16px] md:text-[20px] mb-6 font-normal">
-            {t("signUp.subtitle")}
+            {t("Create your account and get started!")}
           </p>
 
           <div className="flex gap-8 ">
             <InputWithIcon
-              label={t("form.First Name")}
+              label={t("full name")}
               isRequired
-              placeholder={t("form.Enter Your First Name")}
+              placeholder={t("Enter Your full name")}
               icon={<CiUser className="text-white text-[30px]" />}
               {...register("name")}
               error={errors.name?.message}
             />
-
-            <InputWithIcon
-              label={t("form.Last Name")}
-              isRequired
-              placeholder={t("form.Enter Your Last Name")}
-              icon={<CiUser className="text-white text-[30px]" />}
-              {...register("lastName")}
-              error={errors.lastName?.message}
-            />
           </div>
           <div className="flex gap-8">
             <InputWithIcon
-              label={t("form.email")}
+              label={t("email")}
               isRequired
-              placeholder={t("form.Enter Your Email")}
+              placeholder={t("Enter Your Email")}
               icon={<CiMail className="text-white text-[30px]" />}
               {...register("email")}
               error={errors.email?.message}
@@ -149,13 +139,13 @@ const SignUpPage = () => {
             <Controller
               name="phone"
               control={control}
-              rules={{ required: t("form.required") }}
+              rules={{ required: t("required") }}
               render={({ field }) => (
                 <InputWithIcon
-                  label={t("form.Phone Number")}
+                  label={t("Phone Number")}
                   isRequired
                   type="phone"
-                  placeholder={t("form.Enter Your Phone Number")}
+                  placeholder={t("Enter Your Phone Number")}
                   icon={<CiPhone className="text-white text-[30px]" />}
                   value={field.value}
                   onChange={field.onChange}
@@ -168,10 +158,10 @@ const SignUpPage = () => {
           <div className="flex gap-8">
             {" "}
             <InputWithIcon
-              label={t("form.Password")}
+              label={t("Password")}
               isRequired
               type="password"
-              placeholder={t("form.Enter Your Password")}
+              placeholder={t("Enter Your Password")}
               icon={
                 <CiUnlock className="text-white text-[30px] scale-x-[-1]" />
               }
@@ -179,10 +169,10 @@ const SignUpPage = () => {
               error={errors.password?.message}
             />
             <InputWithIcon
-              label={t("form.Confirm Password")}
+              label={t("Confirm Password")}
               isRequired
               type="password"
-              placeholder={t("form.Confirm Your Password")}
+              placeholder={t("Confirm Your Password")}
               icon={
                 <CiUnlock className="text-white text-[30px] scale-x-[-1]" />
               }
@@ -192,18 +182,18 @@ const SignUpPage = () => {
           </div>
 
           <InputWithIcon
-            label={t("form.Gender")}
+            label={t("Gender")}
             isRequired
-            placeholder={t("form.Enter Your Gender")}
+            placeholder={t("Enter Your Gender")}
             icon={<CiUser className="text-white text-[30px]" />}
             {...register("gender")}
             error={errors.gender?.message}
           />
 
           <InputWithIcon
-            label={t("form.Address")}
+            label={t("Address")}
             isRequired
-            placeholder={t("form.Enter Your Address")}
+            placeholder={t("Enter Your Address")}
             icon={<CiLocationOn className="text-white text-[30px]" />}
             {...register("address")}
             error={errors.address?.message}
@@ -214,17 +204,17 @@ const SignUpPage = () => {
               href="#"
               className="text-[var(--main)] text-sm hover:underline"
             >
-              {t("login.forgetPassword")}
+              {t("Forget Password")}
             </Link>
           </div>
           <LoginButtonLoading
-            title={t("login.signInButton")}
+            title={t("Sign In")}
             loading={loading}
             url="/icons/loginUser.svg"
           />
 
           <p className="text-center text-md font-semibold mt-6 mb-3">
-            {t("login.orSignUpWith")}
+            {t("Or Sign up With")}
           </p>
           <div className="flex justify-center gap-6 mb-4">
             <button aria-label="Sign in with Google" className="text-3xl">
@@ -245,13 +235,13 @@ const SignUpPage = () => {
           </div>
 
           <p className="text-center font-semibold text-md">
-            {t("login.signUpQuestion")}
+            {t("Already have account ?")}
             <Link
               href={`/${locale}/login`}
               className="text-[var(--main)] hover:underline"
             >
               {" "}
-              {t("login.login")}
+              {t("login")}
             </Link>
           </p>
         </form>

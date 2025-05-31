@@ -25,8 +25,8 @@ const LoginPage = () => {
   const locale = useLocale();
   const [loading, setLoading] = useState(false);
   const loginSchema = z.object({
-    email: z.string().email(t("login.emailInvalid")),
-    password: z.string().min(2, t("login.passwordMinLength")),
+    email: z.string().email(t("email Invalid")),
+    password: z.string().min(2, t("password Min Length 6")),
   });
   type LoginInput = z.infer<typeof loginSchema>;
 
@@ -83,26 +83,26 @@ const LoginPage = () => {
           className="bg-white rounded-2xl w-[90%] p-8 border-1"
         >
           <h1 className="text-[20px] lg:text-[40px] font-bold text-center mb-1">
-            {t("login.title")}
+            {t("Welcome Back to Sign In")}
           </h1>
           <p className="text-center text-[16px] md:text-[20px] mb-6 font-normal">
-            {t("login.subtitle")}
+            {t("Log in and dive back in")}
           </p>
 
           <InputWithIcon
-            label={t("from.email")}
+            label={t("email")}
             isRequired
-            placeholder={t("from.Enter Your Email")}
+            placeholder={t("Enter Your Email")}
             icon={<CiMail className="text-white text-[30px]" />}
             {...register("email")}
             error={errors.email?.message}
           />
 
           <InputWithIcon
-            label={t("from.Password")}
+            label={t("Password")}
             isRequired
             type="password"
-            placeholder={t("from.Enter Your Password")}
+            placeholder={t("Enter Your Password")}
             icon={
               <CiUnlock className="text-white text-[30px] transform scale-x-[-1]" />
             }
@@ -116,17 +116,17 @@ const LoginPage = () => {
               href="#"
               className="text-[var(--main)] text-sm hover:underline"
             >
-              {t("login.forgetPassword")}
+              {t("forgetPassword")}
             </Link>
           </div>
           <LoginButtonLoading
-            title={t("login.signInButton")}
+            title={t("Sign In")}
             loading={loading}
             url="/icons/loginUser.svg"
           />
 
           <p className="text-center text-md font-semibold mt-6 mb-3">
-            {t("login.orSignUpWith")}
+            {t("Or Sign up With")}
           </p>
           <div className="flex justify-center gap-6 mb-4">
             <button aria-label="Sign in with Google" className="text-3xl">
@@ -147,13 +147,13 @@ const LoginPage = () => {
           </div>
 
           <p className="text-center font-semibold text-md">
-            {t("login.signUpQuestion")}
+            {t("Already have account ?")}
             <Link
               href={`/${locale}/signup`}
               className="text-[var(--main)] hover:underline"
             >
               {" "}
-              {t("login.signUpLink")}
+              {t("Sign up")}
             </Link>
           </p>
         </form>

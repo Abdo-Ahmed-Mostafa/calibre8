@@ -28,7 +28,9 @@ const HeaderBlogs = ({
           </div>
         </div>
         <div className="text-[18px] font-[400] text-[#4B5744] mt-5">
-          {t("blogs.blogTITELMESSAGE")}
+          {t(
+            "Stay updated with industry insights, tips, and the latest trends in tools and maintenance"
+          )}
         </div>
       </div>
     </>

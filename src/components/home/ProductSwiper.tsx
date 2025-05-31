@@ -14,8 +14,10 @@ export default async function ProductSwiper() {
     <section className="">
       <div className=" mx-auto">
         <HeaderSectionHome
-          title={t("HomePage.product")}
-          body={t("HomePage.Experience top quality product")}
+          title={t("Featured Products")}
+          body={t(
+            "Experience top quality and performance with our featured product"
+          )}
         />
         <div className="mb-5">
           {" "}

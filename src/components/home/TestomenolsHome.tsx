@@ -14,15 +14,15 @@ const TestomenolsHome = async () => {
   return (
     <section>
       <HeaderSectionHome
-        title={t("HomePage.Testomenols")}
-        body={t("HomePage.See what our happy customers")}
+        title={t("Testomenols")}
+        body={t(
+          "See what our happy customers have to say about their experience with our products"
+        )}
       />
       <ViewAllButton href="/asdasd" />
       <DataFetcher<any>
         url="/api/public/testimonials"
         render={(Testomenols) => {
-          console.log("Testomenols", Testomenols);
-
           return (
             <ReusableCarousel
               slidesToShow={2}

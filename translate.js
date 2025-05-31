@@ -1,17 +1,21 @@
 const fs = require("fs");
 const path = require("path");
-const axios = require("axios");
 const glob = require("glob");
+const axios = require("axios");
 
-const TRANSLATIONS_DIR = "./messages"; // مجلد الترجمة
-const LANGUAGES = ["en", "fr"]; // اللغات المطلوبة
-const LIBRE_TRANSLATE_URL = "https://libretranslate.com/translate";
+const TRANSLATIONS_DIR = "./messages";
+const LANGUAGES = ["en", "fr"]; // ضيف لغات تانية لو عايز
 
-// تحميل ملفات الترجمة أو إنشاؤها لو مش موجودة
+// تحميل ملفات الترجمة أو إنشاء ملف جديد لو مش موجود
 function loadTranslations(lang) {
   const filePath = path.join(TRANSLATIONS_DIR, `${lang}.json`);
   if (!fs.existsSync(filePath)) return {};
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch (err) {
+    console.error(`❌ Error parsing ${lang}.json:`, err.message);
+    return {};
+  }
 }
 
 // حفظ الترجمة بعد التعديل
@@ -20,57 +24,47 @@ function saveTranslations(lang, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
 }
 
-// دالة الترجمة الجماعية باستخدام LibreTranslate
-async function translateBatch(texts, targetLang = "en") {
-  try {
-    // نرسل كل نص لوحده داخل Promise.all عشان نقدر نترجمهم كلهم مرة واحدة بطريقة غير متزامنة
-    const translations = await Promise.all(
-      texts.map(async (text) => {
-        try {
-          const res = await axios.post(LIBRE_TRANSLATE_URL, {
-            q: text,
-            source: "auto",
-            target: targetLang,
-            format: "text",
-          });
-          return res.data.translatedText;
-        } catch (err) {
-          console.error(
-            `❌ Error translating "${text}" to ${targetLang}:`,
-            err.message
-          );
-          return null;
-        }
-      })
-    );
-
-    return translations;
-  } catch (err) {
-    console.error(`❌ General error in translateBatch:`, err.message);
-    return texts.map(() => null);
-  }
-}
-
-// استخراج كل المفاتيح من t("...")
+// استخراج مفاتيح الترجمة من الملفات
 function extractKeysFromFiles() {
   const files = glob.sync("./src/**/*.{js,jsx,ts,tsx}");
   const keys = new Set();
 
   files.forEach((file) => {
     const content = fs.readFileSync(file, "utf8");
-    const matches = content.match(/t\(["'`]([^"'`]+)["'`]\)/g);
-    if (matches) {
-      matches.forEach((m) => {
-        const key = m.match(/t\(["'`]([^"'`]+)["'`]\)/)[1];
-        keys.add(key);
-      });
-    }
+    const matches = [
+      ...content.matchAll(/\bt\s*\(\s*["'`]([\s\S]*?)["'`]\s*\)/g),
+    ];
+    matches.forEach((m) => {
+      const key = m[1].trim();
+      keys.add(key);
+    });
   });
 
   return [...keys];
 }
 
-// التشغيل
+// ترجمة النص باستخدام MyMemory API
+async function translateText(text, targetLang = "fr") {
+  try {
+    const response = await axios.get(
+      "https://api.mymemory.translated.net/get",
+      {
+        params: {
+          q: text,
+          langpair: `en|${targetLang}`,
+        },
+      }
+    );
+    const translated = response.data.responseData.translatedText;
+    console.log(`"${text}" => "${translated}"`);
+    return translated;
+  } catch (error) {
+    console.error(`❌ Error translating "${text}":`, error.message);
+    return "";
+  }
+}
+
+// التشغيل الرئيسي
 (async () => {
   if (!fs.existsSync(TRANSLATIONS_DIR)) {
     fs.mkdirSync(TRANSLATIONS_DIR);
@@ -78,29 +72,32 @@ function extractKeysFromFiles() {
 
   const keys = extractKeysFromFiles();
 
-  for (const lang of LANGUAGES) {
-    console.log(`\n🔤 Checking translations for: ${lang}`);
-    const translations = loadTranslations(lang);
+  console.log("\n🗝️ All extracted translation keys:");
+  keys.forEach((key) => {
+    console.log(`t("${key}")`);
+  });
 
-    const missingKeys = keys.filter((key) => !translations[key]);
+  for (const lang of LANGUAGES) {
+    console.log(`\n🔍 Checking translations for: ${lang}`);
+    const translations = loadTranslations(lang);
+    const missingKeys = keys.filter((key) => !(key in translations));
 
     if (missingKeys.length === 0) {
-      console.log(`✅ All keys are already translated for ${lang}`);
+      console.log(`✅ All keys are already present in ${lang}.json`);
       continue;
     }
 
-    console.log(`⏳ Translating ${missingKeys.length} keys to ${lang}...`);
-    const translated = await translateBatch(missingKeys, lang);
-
-    translated.forEach((value, index) => {
-      const key = missingKeys[index];
-      if (value) {
-        translations[key] = value;
-        console.log(`✔ ${lang}: ${key} → ${value}`);
+    for (const key of missingKeys) {
+      let translated = "";
+      if (lang === "en") {
+        // لو اللغة انجليزي خلي القيمة = المفتاح نفسه
+        translated = key;
       } else {
-        console.warn(`⚠️ Failed to translate: ${key}`);
+        // ترجم للنهاية المطلوبة
+        translated = await translateText(key, lang);
       }
-    });
+      translations[key] = translated || "";
+    }
 
     saveTranslations(lang, translations);
     console.log(`✅ Updated file: ${lang}.json`);

@@ -2,7 +2,7 @@
 
 import AdsSwiper from "@/components/home/AdsSwiper";
 import CategoriesSwiper from "@/components/home/CategoriesSwiper";
-import ProductSwiper from "@/components/home/ProductSwiper";
+// import ProductSwiper from "@/components/home/ProductSwiper";
 import PartnersSwiper from "@/components/home/PartnersSwiper";
 import PrandsSwiper from "@/components/home/BrandSwiper";
 import FQSHome from "@/components/home/FQSHome";
