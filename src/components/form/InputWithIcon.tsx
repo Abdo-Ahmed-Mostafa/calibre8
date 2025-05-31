@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import SelectMenu from "./SelectMenu";
 
 const InputWithIcon = forwardRef<HTMLInputElement, any>(
   (
@@ -17,6 +18,7 @@ const InputWithIcon = forwardRef<HTMLInputElement, any>(
       type = "text",
       value,
       onChange,
+      option = [],
       ...rest
     },
     ref
@@ -66,6 +68,18 @@ const InputWithIcon = forwardRef<HTMLInputElement, any>(
                   name: rest.name, // مهم علشان يتحفظ الاسم في form
                 }}
               />
+            ) : option.length != 0 ? (
+              <>
+                <div className=" bg-[var(--main-green)]  h-[66px] flex justify-center  ">
+                  <SelectMenu
+                    className="w-full  h-[67px] py-8  border-[#757575] border-s-0 rounded-lg rounded-s-none items-center"
+                    placeholder={placeholder}
+                    options={option}
+                    value={value}
+                    onChange={onChange} // error={error}
+                  />{" "}
+                </div>
+              </>
             ) : (
               <input
                 {...rest}

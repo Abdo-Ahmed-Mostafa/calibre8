@@ -13,15 +13,13 @@ export default function CategoriesSection() {
     <section>
       <div className=" mx-auto">
         <HeaderSectionHome
-          body={t("HomePage.Explore a range of essential tools")}
-          title={t("HomePage.Categories")}
+          title={t("Categories")}
+          body={t("and planers perfect for precision and efficiency")}
         />
         <ViewAllButton href="/asdasd" />
         <DataFetcher<any>
           url="/api/public/categories"
           render={(categories) => {
-            console.log("categories", categories);
-
             return (
               <ReusableCarousel slidesToShow={5} dots={false}>
                 {categories?.data.map((card: any, idx: any) => (

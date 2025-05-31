@@ -12,15 +12,15 @@ const PrandsSwiper = async () => {
   return (
     <div>
       <HeaderSectionHome
-        title={t("HomePage.Brands")}
-        body={t("HomePage.Experience top quality Brand")}
+        title={t("Brands")}
+        body={t(
+          "Experience top quality and performance with our featured product"
+        )}
       />
       <ViewAllButton href="/asdasd" />
       <DataFetcher<any>
         url="/api/public/brand"
         render={(brand) => {
-          console.log("221342412412412", brand);
-
           return (
             <ReusableCarousel slidesToShow={4} centerMode={true} dots={false}>
               {brand?.data.map((brand: any, index: number) => (

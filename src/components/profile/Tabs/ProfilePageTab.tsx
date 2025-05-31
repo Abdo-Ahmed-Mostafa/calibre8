@@ -3,8 +3,8 @@ import { showProfileUser } from "@/lib/redux/profileSlice";
 import { AppDispatch } from "@/lib/redux/store";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ViewProfile from "./ViewProfile";
-import EditProfile from "./EditProfile";
+import ViewProfile from "./profile_user/ViewProfile";
+import EditProfile from "./profile_user/EditProfile";
 
 const ProfilePageTab = () => {
   const data = useSelector((state: any) => state.profileReducer.profile);

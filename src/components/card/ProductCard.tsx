@@ -76,7 +76,7 @@ const ProductCard = ({ product }: any) => {
             width={24}
             height={24}
           />
-          {t("HomePage.add to cart")}
+          {t("add to cart")}
         </Button>
       </div>
     </div>

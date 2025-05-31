@@ -79,7 +79,7 @@ const VerifyAccountPage = () => {
     axiosInstance
       .post("/auth/verify_user/resend", { handle: handle })
       .then(() => {
-        ToasterSoonerSuccess(t("signUp.The code has been resend"));
+        ToasterSoonerSuccess(t("The code has been resend"));
         setResendTimer(120);
         setCanResend(false);
       })
@@ -106,10 +106,10 @@ const VerifyAccountPage = () => {
           className="bg-white rounded-2xl w-[90%] p-8 border-1"
         >
           <h1 className="text-[20px] lg:text-[40px] font-bold text-center mb-1">
-            {t("login.title")}
+            {t("Welcome Back to Sign In")}
           </h1>
           <p className="text-center text-[16px] md:text-[20px] mb-6 font-normal">
-            {t("login.subtitle")}
+            {t("Log in and dive back in")}
           </p>
           <p className="text-center text-[12px] md:text-[16px] mb-6 font-bold">
             {handle}
@@ -118,7 +118,7 @@ const VerifyAccountPage = () => {
             <ReusableOtp otp={otp} setOtp={setOtp} />
           </div>
           <LoginButtonLoading
-            title={t("login.submit")}
+            title={t("submit")}
             loading={loading}
             url="/icons/loginUser.svg"
           />
@@ -137,7 +137,7 @@ const VerifyAccountPage = () => {
           </div>
 
           <p className="text-center text-md font-semibold mt-6 mb-3">
-            {t("login.orSignUpWith")}
+            {t("Or Sign up With")}
           </p>
         </form>
         <BottomInfoCards />
