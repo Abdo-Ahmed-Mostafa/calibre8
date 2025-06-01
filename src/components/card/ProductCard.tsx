@@ -1,17 +1,24 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const ProductCard = ({ product }: any) => {
-  console.log("producasdasdasdt2222221231412", product);
-
+const ProductCard = ({ product, toggleFavoirite }: any) => {
   const t = useTranslations();
   return (
     <div className="rounded-2xl border border-[#DDEFD3] p-4 relative shadow-sm w-full max-w-[280px] space-y-2 bg-white">
       {/* Favorite icon */}
-      <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10">
-        <FaHeart className="w-4 h-4 text-[var(--main)] " />
+      <div
+        className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10"
+        onClick={() => {
+          toggleFavoirite(product?.id, product?.favorite);
+        }}
+      >
+        {product?.favorite ? (
+          <FaHeart className="w-4 h-4 text-[var(--main)]" />
+        ) : (
+          <FaRegHeart />
+        )}
         {/* <div className="w-[26px] h-[26px] flex justify-center items-center">
           <Image
             src={product?.image || `/icons/HartIcons.svg`}

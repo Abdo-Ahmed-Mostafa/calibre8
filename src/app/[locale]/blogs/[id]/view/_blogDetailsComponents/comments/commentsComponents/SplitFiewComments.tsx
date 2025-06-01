@@ -29,6 +29,7 @@ const SplitFiewComments = ({
   setEditingReplyId,
   blogID,
   showAllComments,
+  getBlog,
 }: splitFiewComment) => {
   return (
     <>
@@ -106,6 +107,7 @@ const SplitFiewComments = ({
               {openReply === comment?.id && (
                 <div className="ml-[60px] mt-2">
                   <CreateComment
+                    getBlog={getBlog}
                     setOpenReplay={setOpenReplay}
                     replay
                     BlogId={blogID}
@@ -120,6 +122,7 @@ const SplitFiewComments = ({
         })}
         {isAuth && (
           <CreateComment
+            getBlog={getBlog}
             setOpenReplay={setOpenReplay}
             replay={false}
             BlogId={blogID}

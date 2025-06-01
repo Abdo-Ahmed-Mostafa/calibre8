@@ -23,4 +23,5 @@ export type showAllTypes = {
   setEditingCommentId: any;
   setOpenReplay: any;
   t: any;
+  getBlog: any;
 };

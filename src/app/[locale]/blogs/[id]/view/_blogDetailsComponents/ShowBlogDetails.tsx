@@ -4,7 +4,7 @@ import BlogBody from "./BlogBody";
 import BlogTags from "./BlogTags";
 import CommentLayout from "./comments/commentLayout";
 import { showDetalisType } from "./types/showBlogDetalisTypes";
-
+import { Helmet, HelmetProvider } from "react-helmet-async";
 const ShowBlogDetails = ({
   blog,
   isAuth,
@@ -30,10 +30,14 @@ const ShowBlogDetails = ({
   replyingToReplyId,
   setOpenReplyMenuId,
   setReplyingToReplyId,
+  getBlog,
 }: showDetalisType) => {
   return (
     <div className="w-[90%] mx-auto overflow-hidden rounded-[16px] bg-white pb-10">
       <ViewBlogHeader
+        blogID={id}
+        favorite={blog?.favorite}
+        getBlog={getBlog}
         comments={blog?.all_comments_count}
         date={publishedDate}
         time={publishedTime}
@@ -41,6 +45,7 @@ const ShowBlogDetails = ({
       />
       <div className="px-3 sm:px-8">
         <BlogBody
+          blog={blog}
           title={blog?.title}
           autherSrcImg={blog?.author?.image}
           name={blog?.author?.name}
@@ -52,6 +57,7 @@ const ShowBlogDetails = ({
         </div>
 
         <CommentLayout
+          getBlog={getBlog}
           openReplyMenuId={openReplyMenuId}
           replyingToReplyId={replyingToReplyId}
           setOpenReplyMenuId={setOpenReplyMenuId}

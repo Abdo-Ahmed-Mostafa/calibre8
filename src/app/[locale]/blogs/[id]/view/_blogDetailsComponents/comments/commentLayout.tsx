@@ -26,6 +26,7 @@ const CommentLayout = ({
   setOpenReplyMenuId,
   setReplyingToReplyId,
   setEditingReplyId,
+  getBlog,
 }: commentLayoutType) => {
   return (
     <div className="flex flex-col gap-10">
@@ -36,6 +37,7 @@ const CommentLayout = ({
       )}
 
       <FiewComments
+        getBlog={getBlog}
         openReplyMenuId={openReplyMenuId}
         replyingToReplyId={replyingToReplyId}
         setOpenReplyMenuId={setOpenReplyMenuId}

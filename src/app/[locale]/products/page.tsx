@@ -1,7 +1,7 @@
-import React from "react";
+import ProductLayout from "./_components/Layout";
 
-const products = () => {
-  return <div>products</div>;
+const ProductPage = () => {
+  return <ProductLayout />;
 };
 
-export default products;
+export default ProductPage;

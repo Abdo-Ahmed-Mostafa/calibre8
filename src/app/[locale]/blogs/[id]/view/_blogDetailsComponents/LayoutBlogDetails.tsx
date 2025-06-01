@@ -7,6 +7,7 @@ import ShowAllComments from "./comments/ShowAllComments";
 import { useMainHook } from "@/lib/Hook/useMainHook";
 import CommentList from "./comments/commentsComponents/CommentList";
 import { usePathname } from "next/navigation";
+
 const LayoutBlogDetails = () => {
   const [blog, setBlog] = useState<any>({});
   const [publishedDate, setPublishedDate] = useState<string>("");
@@ -71,6 +72,7 @@ const LayoutBlogDetails = () => {
     <div className="bg-[var(--main-green-2)] py-10">
       {showAllComments ? (
         <ShowAllComments
+          getBlog={getBlog}
           openReplyMenuId={openReplyMenuId}
           replyingToReplyId={replyingToReplyId}
           setOpenReplyMenuId={setOpenReplyMenuId}
@@ -98,6 +100,7 @@ const LayoutBlogDetails = () => {
         />
       ) : (
         <ShowBlogDetails
+          getBlog={getBlog}
           openReplyMenuId={openReplyMenuId}
           replyingToReplyId={replyingToReplyId}
           setOpenReplyMenuId={setOpenReplyMenuId}

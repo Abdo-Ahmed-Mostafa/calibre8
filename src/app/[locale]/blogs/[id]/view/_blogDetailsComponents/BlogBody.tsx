@@ -6,22 +6,23 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import toast from "react-hot-toast";
 import { useMainHook } from "@/lib/Hook/useMainHook";
-
+import { Helmet } from "react-helmet-async";
 const BlogBody = ({
   autherSrcImg,
   name,
   title,
   desc,
+  blog,
 }: {
   autherSrcImg: string;
   name: string;
   title: string;
   desc: string;
+  blog: any;
 }) => {
   const { t } = useMainHook();
   const pathname = usePathname();
-  const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
-  const currentUrl = `${baseUrl}${pathname}`;
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const shareLinks: Record<string, string> = {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
@@ -43,6 +44,43 @@ const BlogBody = ({
   };
   return (
     <div className="flex flex-col gap-4  mt-5">
+      {blog?.title && (
+        <Helmet>
+          <title>{blog?.title || "عنوان المقال"}</title>
+          <meta
+            name="description"
+            content={blog?.shortDescription || blog?.desc || "وصف المقال"}
+          />
+
+          {/* وسوم LinkedIn و Facebook (Open Graph) */}
+          <meta property="og:title" content={blog?.title} />
+          <meta
+            property="og:description"
+            content={blog?.shortDescription || blog?.desc}
+          />
+          <meta
+            property="og:url"
+            content={`https://yourdomain.com/blog/${blog?.id}`}
+          />
+          <meta property="og:type" content="article" />
+          <meta
+            property="og:image"
+            content={blog?.image || "https://yourdomain.com/default-image.jpg"}
+          />
+
+          {/* Twitter Cards */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={blog?.title} />
+          <meta
+            name="twitter:description"
+            content={blog?.shortDescription || blog?.desc}
+          />
+          <meta
+            name="twitter:image"
+            content={blog?.image || "https://yourdomain.com/default-image.jpg"}
+          />
+        </Helmet>
+      )}
       <div className="flex flex-col gap-5 w-full">
         <h1 className="font-[700] text-[24px] text-[#071200] ">{title}</h1>
         <p className="text-[16px] text-[#4B5744] font-[400]">{desc}</p>
@@ -77,13 +115,27 @@ const BlogBody = ({
               </Link>
             ))}
           </div>
-          <div
-            className="bg-white flex justify-center items-center shadow-md rounded-[4px] size-[34px]"
-            onClick={() => {
-              copyLink();
-            }}
-          >
+          <div className="bg-white flex justify-center items-center shadow-md rounded-[4px] size-[34px] relative group">
             <Image src={`/icons/mdi_share.svg`} alt="" width={24} height={24} />
+            <div className="px-5 py-2.5 rounded-xl shadow-lg flex items-center gap-2 absolute right-0 -top-14 opacity-0 group-hover:opacity-100 w-[200px]  z-10 transition-all duration-300">
+              {" "}
+              {Object.entries(shareLinks).map(([icon, url]) => (
+                <Link
+                  key={icon}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={`/icons/${icon}.svg`}
+                    alt={icon}
+                    width={29}
+                    height={29}
+                    className="hover:opacity-80 cursor-pointer"
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

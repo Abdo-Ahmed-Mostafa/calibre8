@@ -18,7 +18,7 @@ const Clientblog = () => {
   const [subCategory, setSubCategory] = useState("");
   const [openFilter, setOpenFilter] = useState(false);
   const [page, setPage] = useState(1);
-  console.log("hphphp-312", page);
+  console.log("hphphp-312", blogs);
 
   const getBlogs = useCallback(() => {
     const params = new URLSearchParams();
@@ -58,6 +58,7 @@ const Clientblog = () => {
       <div className="w-[85%] mx-auto py-10 ">
         <HeaderBlogs t={t} setHandle={setHandle} handleSearch={handleSearch} />
         <BlogBody
+          getBlogs={getBlogs}
           openFiler={openFilter}
           setOpenFiler={setOpenFilter}
           setSubCategory={setSubCategory}

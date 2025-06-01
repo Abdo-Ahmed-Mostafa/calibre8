@@ -20,4 +20,5 @@ export type commentLayoutType = {
   setOpenReplay: any;
   t: any;
   setEditingCommentId: any;
+  getBlog: any;
 };

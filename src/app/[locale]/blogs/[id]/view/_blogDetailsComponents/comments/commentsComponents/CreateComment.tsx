@@ -15,11 +15,13 @@ const CreateComment = ({
   getBlogComments,
   idCommentAndReplay,
   setOpenReplay,
+  getBlog,
 }: {
   BlogId: string | number;
   me: any;
   replay?: boolean;
   getBlogComments: () => void;
+  getBlog: () => void;
   idCommentAndReplay?: number | null;
   setOpenReplay: (val: any) => void;
 }) => {
@@ -78,6 +80,7 @@ const CreateComment = ({
         setContent("");
         setOpenReplay(null);
         setShowEmojiPicker(false);
+        getBlog();
       })
       .catch(() => {
         toast.error(t("commentCreatedUnSuccefully"));

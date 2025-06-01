@@ -19,4 +19,5 @@ export type fiewTypes = {
   editingCommentId: any;
   fourComments: any;
   openReply: any;
+  getBlog: any;
 };

@@ -64,5 +64,13 @@
   "Write your comment": "Write your comment",
   "update your comment": "Update your comment",
   "Update": "Update",
-  "Delete": "Delete"
+  "Delete": "Delete",
+  "Next": "Next",
+  "Blogs": "Blogs",
+  "Total Likes": "Total Likes",
+  "Reply": "Reply",
+  "Like": "Like",
+  "tags ": "tags",
+  "blog added to favorites": "blog added to favorites",
+  "blog removed from favorites": "blog removed from favorites"
 }

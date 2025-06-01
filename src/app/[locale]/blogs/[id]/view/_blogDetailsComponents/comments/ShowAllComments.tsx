@@ -28,11 +28,13 @@ const ShowAllComments = ({
   replyingToReplyId,
   setOpenReplyMenuId,
   setReplyingToReplyId,
+  getBlog,
 }: showAllTypes) => {
   return (
     <>
       <div className="w-[90%] mx-auto bg-white p-6 rounded-lg shadow">
         <CommentLayout
+          getBlog={getBlog}
           openReplyMenuId={openReplyMenuId}
           replyingToReplyId={replyingToReplyId}
           setOpenReplyMenuId={setOpenReplyMenuId}

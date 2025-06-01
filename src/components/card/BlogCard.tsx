@@ -1,15 +1,35 @@
 "use client";
+import axiosInstance from "@/lib/axios/axiosInstance";
 import { formatDateToCustom } from "@/lib/Hook/formatDateToCustom";
 import { useMainHook } from "@/lib/Hook/useMainHook";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import React from "react";
-import { FaHeart } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const BlogCard = ({ blog }: any) => {
+const BlogCard = ({ blog, getBlogs }: any) => {
   const { router } = useMainHook();
   const locale = useLocale();
-
+  const { t } = useMainHook();
+  const toggleFavoirite = (blogID: number, favorite: boolean) => {
+    axiosInstance
+      .patch("/api/favorites/toggle", {
+        model_type: "blog",
+        model_id: blogID,
+      })
+      .then(() => {
+        getBlogs();
+        if (favorite) {
+          toast.success(t("blog removed from favorites"));
+        } else {
+          toast.success(t("blog added to favorites"));
+        }
+      })
+      .catch(() => {
+        toast.error(t("you are not auth"));
+      });
+  };
   return (
     <div className="bg-[#f7fff2] col-span-2 lg:col-span-1   rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
       {/* الصورة العلوية */}
@@ -28,8 +48,16 @@ const BlogCard = ({ blog }: any) => {
         <div
           className="absolute top-2.5 right-2.5 bg-[#e6faf0e6] rounded-full flex justify-center items-center z-10"
           style={{ width: 30, height: 30 }}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFavoirite(blog?.id, blog?.favorite);
+          }}
         >
-          <FaHeart className="w-4 h-4 text-[var(--main)]" />
+          {blog?.favorite ? (
+            <FaHeart className="w-4 h-4 text-[var(--main)]" />
+          ) : (
+            <FaRegHeart />
+          )}
         </div>
       </div>
 

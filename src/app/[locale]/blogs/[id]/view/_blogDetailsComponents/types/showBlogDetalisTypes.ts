@@ -26,4 +26,5 @@ export type showDetalisType = {
   setEditingCommentId: any;
   setOpenReplay: any;
   t: any;
+  getBlog: any;
 };

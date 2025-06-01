@@ -29,6 +29,7 @@ const FiewComments = ({
   replyingToReplyId,
   setOpenReplyMenuId,
   setReplyingToReplyId,
+  getBlog,
 }: fiewTypes) => {
   const [loading, setLoading] = useState(false);
   const handleDelete = (commentId: number) => {
@@ -100,6 +101,7 @@ const FiewComments = ({
   return (
     <>
       <SplitFiewComments
+        getBlog={getBlog}
         blogID={blogID}
         editedContent={editedContent}
         editingCommentId={editingCommentId}
