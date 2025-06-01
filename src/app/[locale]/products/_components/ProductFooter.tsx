@@ -1,7 +1,11 @@
 import Pagination from "@/components/Tfooter/NextPrevFooter";
 import React from "react";
-
-const ProductFooter = ({ totalPages, page, setPage }) => {
+interface BlogPaginationProps {
+  page: number;
+  setPage: (page: number) => void;
+  totalPages: number;
+}
+const Footer = ({ totalPages, page, setPage }: BlogPaginationProps) => {
   return (
     <div>
       <Pagination page={page} setPage={setPage} totalPages={totalPages} />
@@ -9,4 +13,4 @@ const ProductFooter = ({ totalPages, page, setPage }) => {
   );
 };
 
-export default ProductFooter;
+export default Footer;

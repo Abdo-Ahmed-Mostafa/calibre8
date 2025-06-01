@@ -24,11 +24,13 @@ const ReplayCard = ({
   BlogId,
   setOpenLikeList,
   me,
+  getBlog,
 }: ReplayCardTypes) => {
   return (
     <>
       {" "}
       <ReplayCardSplit
+        getBlog={getBlog}
         openReply={openReply}
         openReplyMenuId={openReplyMenuId}
         BlogId={BlogId}
@@ -53,6 +55,7 @@ const ReplayCard = ({
       />
       {reply?.replies?.length > 0 && (
         <RepliesComment
+          getBlog={getBlog}
           handleDelete={handleDelete}
           openReplyMenuId={openReplyMenuId}
           replyingToReplyId={replyingToReplyId}

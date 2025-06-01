@@ -2,14 +2,22 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { usePathname } from "next/navigation";
 
-const ProductCard = ({ product, toggleFavoirite }: any) => {
+const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
+  const pathname = usePathname();
+  const handleCopyLink = () => {
+    const productUrl = `${pathname}/${product.id}/view`;
+    navigator.clipboard.writeText(productUrl);
+    toast.success(t("Product link copied"));
+  };
   const t = useTranslations();
   return (
-    <div className="rounded-2xl border border-[#DDEFD3] p-4 relative shadow-sm w-full max-w-[280px] space-y-2 bg-white">
+    <div className="rounded-2xl border border-[#DDEFD3] p-4 relative shadow-sm col-span-full md:col-span-1  xl:col-span-1 space-y-2 bg-white">
       {/* Favorite icon */}
       <div
-        className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10"
+        className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10 cursor-pointer"
         onClick={() => {
           toggleFavoirite(product?.id, product?.favorite);
         }}
@@ -19,20 +27,12 @@ const ProductCard = ({ product, toggleFavoirite }: any) => {
         ) : (
           <FaRegHeart />
         )}
-        {/* <div className="w-[26px] h-[26px] flex justify-center items-center">
-          <Image
-            src={product?.image || `/icons/HartIcons.svg`}
-            alt="HartIcons"
-            width={26}
-            height={26}
-          />
-        </div> */}
       </div>
 
       {/* Product Image */}
       <div className="mb-14">
         <Image
-          src="/product.png"
+          src={product?.image}
           alt="Product"
           width={200}
           height={170}
@@ -46,14 +46,26 @@ const ProductCard = ({ product, toggleFavoirite }: any) => {
       {/* Brand + Type + ID */}
       <div className="flex justify-between items-center gap-2">
         <div className="flex flex-wrap items-center gap-1 text-xs text-gray-500">
-          <Image src="/fluke.png" alt="Brand" width={20} height={20} />
-          <span className="text-black font-medium">Fluke</span>
+          <Image
+            src={product?.brand?.image}
+            alt={product?.brand?.name}
+            width={20}
+            height={20}
+          />
+          <span className="text-black font-medium">
+            {product?.category?.name}
+          </span>
           <span>›</span>
-          <span>TRMS Multimeter</span>
+          <span>{product?.brand?.name}</span>
           <span>›</span>
-          <span className="text-green-600 font-semibold">117</span>
+          <span className="text-green-600 font-semibold"> {product?.id}</span>
         </div>
-        <Image src="/Frame 2608905.png" alt="Brand" width={30} height={30} />
+        <Image
+          src={product?.category?.image}
+          alt="Brand"
+          width={30}
+          height={30}
+        />
       </div>
 
       {/* Description */}
@@ -62,28 +74,33 @@ const ProductCard = ({ product, toggleFavoirite }: any) => {
       </div>
 
       {/* Arrow */}
-      <div className="flex justify-end">
+      <div className="flex justify-end cursor-pointer" onClick={handleCopyLink}>
         <Image src="/leftArow.svg" alt="Arrow" width={30} height={30} />
       </div>
 
       {/* Unit of measurement */}
       <p className="text-sm font-medium mt-3 text-gray-800">
-        Unit of measurement:{" "}
+        {t("Unit of measurement")}:{" "}
         <span className="font-semibold text-black">
-          {product?.unit_of_measure}
+          {product?.unit_of_measure?.unit}
         </span>
       </p>
 
       {/* Add to Cart Button */}
       <div className="flex justify-center items-center">
-        <Button className="w-full mt-5 bg-black text-white rounded-lg flex items-center justify-center gap-2 text-sm py-2">
+        <Button
+          onClick={() => {
+            addToCart(product?.id);
+          }}
+          className="cursor-pointer w-[226px] font-[600] text-[24px] h-[48px] mt-5 bg-black text-white rounded-lg flex items-center justify-center gap-2 py-2"
+        >
           <Image
             src={`/icons/CartIcons.svg`}
             alt="CartIcons"
             width={24}
             height={24}
           />
-          {t("HomePage.add to cart")}
+          {t("add to cart")}
         </Button>
       </div>
     </div>

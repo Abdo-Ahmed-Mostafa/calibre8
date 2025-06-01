@@ -22,7 +22,7 @@ const BlogBody = ({
 }) => {
   const { t } = useMainHook();
   const pathname = usePathname();
-  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+  const currentUrl = typeof window !== "undefined" ? pathname : "";
 
   const shareLinks: Record<string, string> = {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
@@ -34,14 +34,14 @@ const BlogBody = ({
     x: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}`,
     whatsapp: `https://wa.me/?text=${encodeURIComponent(currentUrl)}`,
   };
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(currentUrl);
-      toast.success(t("linkCopied"));
-    } catch {
-      toast.error(t("someThingWentWrongWhileCopyLink"));
-    }
-  };
+  // const copyLink = async () => {
+  //   try {
+  //     await navigator.clipboard.writeText(currentUrl);
+  //     toast.success(t("linkCopied"));
+  //   } catch {
+  //     toast.error(t("someThingWentWrongWhileCopyLink"));
+  //   }
+  // };
   return (
     <div className="flex flex-col gap-4  mt-5">
       {blog?.title && (

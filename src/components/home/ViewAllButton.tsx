@@ -11,7 +11,7 @@ const ViewAllButton = ({ href = "#" }) => {
         href={href}
         className="text-[var(--main)] font-medium flex items-center justify-end gap-1  cursor-pointer"
       >
-        {t("HomePage.View All") || "View All"}{" "}
+        {t("View All")}
         <span className="w-[30px] h-[30px] bg-white rounded-full flex justify-center items-center">
           <Image
             src={`/viewAllIicons.svg`}

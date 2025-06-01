@@ -1,9 +1,11 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaGooglePlay, FaApple } from "react-icons/fa";
 
 const Footer = () => {
+  const t = useTranslations();
   return (
     <footer className="bg-gray-100 text-gray-700 pt-10 px-4 md:px-20">
       <div className="flex flex-col md:flex-row gap-8 pb-10 border-b border-gray-300">
@@ -19,40 +21,41 @@ const Footer = () => {
               width={23}
               height={23}
             />
-            <p>Rue Louis Lumiere, 30 B.P 836</p>
+            <p>{t("Rue Louis Lumiere, 30 B P 836")}</p>
           </div>
           <p className="text-sm text-gray-500">
-            We provide high-quality tools and equipment for all your appliance
-            repair needs—reliable, durable, and built to get the job done right.
+            {t(
+              "We provide high-quality tools and equipment for all your appliance repair needs—reliable, durable, and built to get the job done right"
+            )}
           </p>
         </div>
 
         {/* Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm flex-1">
           <div>
-            <h4 className="font-bold mb-2">Links</h4>
+            <h4 className="font-bold mb-2">{t("Links")}</h4>
             <ul className="space-y-1">
-              <li className="text-green-500">Home</li>
-              <li>Categories</li>
-              <li>Brands</li>
+              <li className="text-green-500"> {t("Home")} </li>
+              <li>{t("Categories")}</li>
+              <li>{t("Brands")} </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-2">More</h4>
+            <h4 className="font-bold mb-2">{t("More")} </h4>
             <ul className="space-y-1">
-              <li>About Us</li>
-              <li>Contact Us</li>
-              <li>Terms & Conditions</li>
-              <li>Price Policy</li>
+              <li>{t("About Us")}</li>
+              <li>{t("Contact Us")} </li>
+              <li>{t("Terms & Conditions")} </li>
+              <li>{t("Price Policy")}</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-2">Support</h4>
+            <h4 className="font-bold mb-2"> {t("Support")} </h4>
             <ul className="space-y-1">
-              <li>Product return policy</li>
-              <li>FQS</li>
-              <li>Terms & Purchase</li>
-              <li>Testimonials</li>
+              <li>{t("Product return policy")} </li>
+              <li>{t("FQS")} </li>
+              <li>{t("Terms & Purchase")}</li>
+              <li>{t("Testimonials")}</li>
             </ul>
           </div>
         </div>
@@ -67,8 +70,8 @@ const Footer = () => {
           >
             <FaGooglePlay className="text-2xl" />
             <div className="flex flex-col">
-              <h2 className="text-[12px]">Download on the</h2>
-              <h2 className="text-[18px] font-semibold">Google Play</h2>
+              <h2 className="text-[12px]">{t("Download on the")}</h2>
+              <h2 className="text-[18px] font-semibold">{t("Google Play")}</h2>
             </div>
           </Link>
           <Link
@@ -77,20 +80,20 @@ const Footer = () => {
           >
             <FaApple className="text-2xl" />
             <div className="flex flex-col">
-              <h2 className="text-[12px]">Download on the</h2>
-              <h2 className="text-[18px] font-semibold">App Store</h2>
+              <h2 className="text-[12px]">{t("Download on the")}</h2>
+              <h2 className="text-[18px] font-semibold">{t("App Store")}</h2>
             </div>
           </Link>
         </div>
         <div className="flex flex-wrap gap-2 justify-center md:justify-end">
           {[
-            "linkedin",
-            "instagram",
-            "youtube",
-            "tiktok",
-            "facebook",
-            "x",
-            "whatsapp",
+            t("linkedin"),
+            t("instagram"),
+            t("youtube"),
+            t("tiktok"),
+            t("facebook"),
+            t("x"),
+            t("whatsapp"),
           ].map((icon) => (
             <Image
               key={icon}
@@ -107,8 +110,8 @@ const Footer = () => {
       {/* Bottom */}
       <div className="flex justify-center items-center py-4 text-sm">
         <p className="text-center">
-          Copy Rights Designed By{" "}
-          <span className="text-green-500">Dr.Code</span> @2025
+          {t("Copy Rights Designed By")}
+          <span className="text-green-500">{t("Dr Code")}</span> @2025
         </p>
       </div>
     </footer>

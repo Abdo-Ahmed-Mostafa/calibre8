@@ -14,15 +14,15 @@ const PartnersSwiper = async () => {
   return (
     <div>
       <HeaderSectionHome
-        title={t("HomePage.Partners")}
-        body={t("HomePage.Our trusted partners")}
+        title={t("Customers Who Trust Us")}
+        body={t(
+          "Our trusted partners ensure we bring you the best products and services available"
+        )}
       />
       <ViewAllButton href="/asdasd" />
       <DataFetcher<any>
         url="/api/public/partners"
         render={(partner) => {
-          console.log("aasdafax", partner);
-
           return (
             <ReusableCarousel
               slidesToShow={4}

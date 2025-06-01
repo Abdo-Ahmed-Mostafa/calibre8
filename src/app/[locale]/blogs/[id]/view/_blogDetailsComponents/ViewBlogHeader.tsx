@@ -44,7 +44,7 @@ const ViewBlogHeader = ({
   return (
     <div className="flex flex-col gap-3 overflow-hidden rounded-[16px] relative">
       <Image
-        src={"/icons/amercaFlag.svg"}
+        src={srcBlog}
         className="w-full h-[250px] sm:h-[474px] object-cover"
         width={200}
         height={200}

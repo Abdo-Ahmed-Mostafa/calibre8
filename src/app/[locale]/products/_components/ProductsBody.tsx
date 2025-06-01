@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import FilterProducts from "./FilterProducts";
-import EmptyBlogs from "../../blogs/_blogsComponents/EmptyBlogs";
 import ProductCard from "@/components/card/ProductCard";
+import EmptyPage from "@/components/EmptyPage";
 
 const ProductsBody = ({
   openFilter,
@@ -12,10 +12,14 @@ const ProductsBody = ({
   brandID,
   category,
   products,
-  onApplyFilter,
   toggleFavoirite,
+  addToCart,
+  setUnitsIDS,
+  unitsIDS,
 }: {
-  onApplyFilter: any;
+  unitsIDS: any;
+  setUnitsIDS: any;
+  addToCart: any;
   toggleFavoirite: any;
   openFilter: any;
   setOpenFilter: any;
@@ -26,9 +30,9 @@ const ProductsBody = ({
   products: any;
 }) => {
   return (
-    <div className="mt-10 flex flex-col lg:flex-row  gap-1.5">
+    <div className="mt-10 flex flex-col   gap-5 relative ">
       <button
-        className="rounded-[12px] p-[8px] h-[44px] w-[44px] bg-[#F7FFF2] cursor-pointer"
+        className="rounded-[12px] p-[8px] h-[44px] w-[44px] bg-[#F7FFF2] shadow-md cursor-pointer"
         onClick={() => {
           setOpenFilter(!openFilter);
         }}
@@ -38,11 +42,13 @@ const ProductsBody = ({
           height={22}
           width={22}
           alt="filter"
+          className="mx-auto"
         />
       </button>
       {openFilter && (
         <FilterProducts
-          onApply={onApplyFilter}
+          setUnitsIDS={setUnitsIDS}
+          unitsIDS={unitsIDS}
           setBrandID={setBrandID}
           setCategory={setCategory}
           brandID={brandID}
@@ -50,19 +56,20 @@ const ProductsBody = ({
         />
       )}
       {products?.data?.length > 0 ? (
-        <div className="grid c grid-cols-4 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="grid  grid-cols-4 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {products?.data?.map((product: any, index: number) => {
             return (
               <ProductCard
                 product={product}
                 key={index}
                 toggleFavoirite={toggleFavoirite}
+                addToCart={addToCart}
               />
             );
           })}
         </div>
       ) : (
-        <EmptyBlogs />
+        <EmptyPage />
       )}
     </div>
   );

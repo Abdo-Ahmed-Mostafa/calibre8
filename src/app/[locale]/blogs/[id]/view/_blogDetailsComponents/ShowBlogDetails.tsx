@@ -4,7 +4,6 @@ import BlogBody from "./BlogBody";
 import BlogTags from "./BlogTags";
 import CommentLayout from "./comments/commentLayout";
 import { showDetalisType } from "./types/showBlogDetalisTypes";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 const ShowBlogDetails = ({
   blog,
   isAuth,

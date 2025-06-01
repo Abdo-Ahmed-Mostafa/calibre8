@@ -12,14 +12,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const FilterProducts = ({
-  onApply,
   setBrandID,
   setCategory,
   brandID,
   category,
+  unitsIDS,
+  setUnitsIDS,
 }: {
-  onApply: any;
   setBrandID: any;
+  setUnitsIDS: any;
+  unitsIDS: any;
   setCategory: any;
   brandID: any;
   category: any;
@@ -27,6 +29,8 @@ const FilterProducts = ({
   const { t } = useMainHook();
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [untis, setUnits] = useState([]);
+  const [tempunits, setTempUnits] = useState(unitsIDS || []);
   const [tempCategories, setTempCategories] = useState<number[]>(
     category || []
   );
@@ -34,6 +38,11 @@ const FilterProducts = ({
   const getCategories = () => {
     axiosInstance.get(`/select_menu/parent-categories`).then((resolved) => {
       setCategories(resolved?.data?.data);
+    });
+  };
+  const getUnits = () => {
+    axiosInstance.get(`/select_menu/units`).then((resolved) => {
+      setUnits(resolved?.data?.data);
     });
   };
 
@@ -46,6 +55,7 @@ const FilterProducts = ({
   useEffect(() => {
     getCategories();
     getBrands();
+    getUnits();
   }, []);
 
   const toggleSelection = (
@@ -61,13 +71,13 @@ const FilterProducts = ({
   };
 
   return (
-    <div className="w-[280px] absolute left-10 bg-white rounded-xl border p-4 space-y-6 shadow">
+    <div className="w-full  sm:w-[280px] top-12 sm:top-0 absolute sm:left-12  md:left-14 lg:left-12 xl:left-[3.5%] bg-white rounded-xl border p-4 space-y-6 shadow z-[50] h-[400px] overflow-auto">
       <h2 className="font-bold text-lg">{t("Filters products")}</h2>
 
       <Accordion type="multiple" className="w-full space-y-4">
         {/* Categories */}
         <AccordionItem value="categories">
-          <AccordionTrigger className="text-left font-bold text-base">
+          <AccordionTrigger className="text-left font-bold text-base cursor-pointer">
             {t("Category")}
           </AccordionTrigger>
           <AccordionContent>
@@ -96,7 +106,7 @@ const FilterProducts = ({
 
         {/* Brands */}
         <AccordionItem value="brands">
-          <AccordionTrigger className="text-left font-bold text-base">
+          <AccordionTrigger className="text-left font-bold text-base cursor-pointer">
             {t("Brands")}
           </AccordionTrigger>
           <AccordionContent>
@@ -122,14 +132,34 @@ const FilterProducts = ({
             ))}
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="units">
+          <AccordionTrigger className="text-left font-bold text-base cursor-pointer">
+            {t("units")}
+          </AccordionTrigger>
+          <AccordionContent>
+            {untis.map((unit: any) => (
+              <div key={unit.id} className="flex items-center gap-2 py-1">
+                <span className="flex-1 text-sm">{unit?.name}</span>
+                <input
+                  type="checkbox"
+                  className="cursor-pointer"
+                  checked={tempunits.includes(unit?.id)}
+                  onChange={() =>
+                    toggleSelection(unit.id, tempBrands, setTempUnits)
+                  }
+                />
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
 
       <Button
-        className="w-full bg-lime-500 hover:bg-lime-600 text-white cursor-pointer"
+        className="w-full bg-[#83C55A] hover:bg-lime-600 text-white cursor-pointer"
         onClick={() => {
           setCategory(tempCategories);
           setBrandID(tempBrands);
-          onApply();
+          setUnitsIDS(tempunits);
         }}
       >
         {t("Apply Filter")}

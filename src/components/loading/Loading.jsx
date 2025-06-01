@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Loading() {
+export default function LoadingPage() {
   return (
     <div className="loader flex justify-center h-screen items-center">
       <div className="preloader">

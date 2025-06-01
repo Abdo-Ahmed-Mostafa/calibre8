@@ -16,7 +16,7 @@ export async function POST(request: Request) {
         method: "POST",
         // credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, type: 2 }),
       }
     );
 

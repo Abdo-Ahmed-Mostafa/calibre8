@@ -7,14 +7,14 @@ import Footer from "@/components/Footer/Footer";
 import "@/app/globals.css";
 import "@/app/app.css";
 import { Toaster } from "react-hot-toast";
-import { HelmetProvider } from "react-helmet-async";
+
 const ClientProvierLayout = ({ children }: any) => {
   return (
     <div className="">
       <Provider store={store}>
         <Navbar />
         <Toaster position="top-center" reverseOrder={false} />
-        <HelmetProvider> {children}</HelmetProvider>
+        {children}
         <Footer />
       </Provider>
     </div>

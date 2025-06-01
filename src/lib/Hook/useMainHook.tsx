@@ -12,6 +12,13 @@ export const useMainHook = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const dispatch = useDispatch<AppDispatch>();
+  function createImageFromObject(obj: any) {
+    if (!obj) {
+      throw new Error("Object is required");
+    }
+    const imageUrl = URL.createObjectURL(obj);
+    return imageUrl;
+  }
 
   const isArabic = useMemo(() => locale === "ar", [locale]);
 
@@ -171,5 +178,7 @@ export const useMainHook = () => {
     filterDuplicates,
     appendToFormData,
     handleMultiLangInput,
+    locale,
+    createImageFromObject,
   };
 };

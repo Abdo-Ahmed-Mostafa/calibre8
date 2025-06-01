@@ -2,6 +2,9 @@
 import { forwardRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import SelectMenu from "./SelectMenu";
 
 const InputWithIcon = forwardRef<HTMLInputElement, any>(
   (
@@ -13,6 +16,9 @@ const InputWithIcon = forwardRef<HTMLInputElement, any>(
       className,
       error,
       type = "text",
+      value,
+      onChange,
+      option = [],
       ...rest
     },
     ref
@@ -28,12 +34,13 @@ const InputWithIcon = forwardRef<HTMLInputElement, any>(
       <div className="w-full h-full">
         <label className="text-[14px] ms-1 font-[600] ">
           {label}
-          {isRequired && <span className="text-red-500">*</span>}
+          {isRequired && <span className=""> : </span>}
+          {isRequired && <span className="text-red-500 text-md">*</span>}
         </label>
         <div className="flex items-center w-full my-2">
           {icon && (
             <div
-              className={`w-[64px] h-[56px] bg-[var(--main)] rounded-s-lg flex items-center justify-center ${
+              className={`w-[74px] h-[66px] bg-[var(--main)] rounded-s-lg flex items-center justify-center ${
                 error ? "border-2 border-red-500 border-e-0" : ""
               }`}
             >
@@ -41,15 +48,52 @@ const InputWithIcon = forwardRef<HTMLInputElement, any>(
             </div>
           )}
           <div className="flex-grow relative">
-            <input
-              {...rest}
-              ref={ref}
-              type={type === "password" && !showPassword ? "password" : "text"}
-              className={`${className} border-2 w-full bg-[var(--main-green)] border-[#757575] border-s-0 rounded-lg rounded-s-none p-2 h-[56px] outline-none ${
-                error ? "border-red-500" : ""
-              }`}
-              placeholder={placeholder || t("writeHere")}
-            />
+            {type == "phone" ? (
+              <PhoneInput
+                country={"eg"}
+                value={value}
+                onChange={onChange}
+                inputStyle={{
+                  width: "100%",
+                  height: "66px",
+                  paddingLeft: "48px",
+                  backgroundColor: "var(--main-green)",
+                  borderColor: error ? "red" : "#757575",
+                }}
+                buttonStyle={{
+                  width: "0px",
+                }}
+                containerStyle={{ width: "100%" }}
+                inputProps={{
+                  name: rest.name, // مهم علشان يتحفظ الاسم في form
+                }}
+              />
+            ) : option.length != 0 ? (
+              <>
+                <div className=" bg-[var(--main-green)]  h-[66px] flex justify-center  ">
+                  <SelectMenu
+                    className="w-full  h-[67px] py-8  border-[#757575] border-s-0 rounded-lg rounded-s-none items-center"
+                    placeholder={placeholder}
+                    options={option}
+                    value={value}
+                    onChange={onChange} // error={error}
+                  />{" "}
+                </div>
+              </>
+            ) : (
+              <input
+                {...rest}
+                ref={ref}
+                type={
+                  type === "password" && !showPassword ? "password" : "text"
+                }
+                className={`${className} placeholder:ps-6 border-[1px] w-full placeholder:text-[15px] placeholder:font-normal placeholder:text-[var(--gray-footer)] bg-[var(--main-green)] border-[#757575] border-s-0 rounded-lg rounded-s-none p-2 h-[66px] outline-none ${
+                  error ? "border-red-500" : ""
+                }`}
+                placeholder={placeholder || t("writeHere")}
+              />
+            )}
+
             {type === "password" && (
               <button
                 type="button"

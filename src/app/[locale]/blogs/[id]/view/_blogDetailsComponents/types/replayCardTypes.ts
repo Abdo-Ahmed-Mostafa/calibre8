@@ -1,6 +1,7 @@
 export type ReplayCardTypes = {
   isOwner: any;
   reply: any;
+  getBlog: any;
   t: any;
   setEditingReplyId: any;
   setEditedContent: any;

@@ -30,6 +30,7 @@ const ReplayCardSplit = ({
   BlogId,
   setOpenLikeList,
   me,
+  getBlog,
 }: ReplayCardTypes) => {
   return (
     <>
@@ -158,6 +159,7 @@ const ReplayCardSplit = ({
       {replyingToReplyId === reply.id && (
         <div className="ml-[60px] mt-2">
           <CreateComment
+            getBlog={getBlog}
             setOpenReplay={setReplyingToReplyId}
             replay
             BlogId={BlogId}

@@ -61,7 +61,7 @@ export default function BlogFilter({
       <Accordion type="multiple" defaultValue={["category", "subcategory"]}>
         <AccordionItem value="category">
           <AccordionTrigger className="font-semibold">
-            {t("blogs.Category")}
+            {t("Category")}
           </AccordionTrigger>
           <AccordionContent>
             <ScrollArea className="h-[180px] pr-2">
@@ -111,7 +111,7 @@ export default function BlogFilter({
 
         <AccordionItem value="subcategory">
           <AccordionTrigger className="font-semibold">
-            {t("blogs.Sub Category")}
+            {t("Sub Category")}
           </AccordionTrigger>
           <AccordionContent>
             <ScrollArea className="h-[180px] pr-2">
@@ -150,7 +150,7 @@ export default function BlogFilter({
         onClick={onApplyFilter}
         className="w-full bg-lime-500 hover:bg-lime-600 text-white font-bold cursor-pointer"
       >
-        {t("blogs.Apply Filter")}
+        {t("Apply Filter")}
       </Button>
     </div>
   );

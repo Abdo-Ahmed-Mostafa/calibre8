@@ -12,8 +12,10 @@ const FQSHome = async () => {
     <div>
       {" "}
       <HeaderSectionHome
-        title={t("HomePage.FQS")}
-        body={t("HomePage.Find answers to common questions")}
+        title={t("FQS")}
+        body={t(
+          "Find answers to common questions about our products, services, and policies We've got you covered!"
+        )}
       />
       <div className="my-6">
         {" "}

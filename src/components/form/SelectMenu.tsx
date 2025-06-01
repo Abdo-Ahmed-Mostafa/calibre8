@@ -6,31 +6,38 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+type OptionType = {
+  id: number | string;
+  name: string;
+};
+
 const SelectMenu = ({
   placeholder,
   className,
-  options,
-}: // url,
-{
+  options = [],
+  value,
+  onChange,
+}: {
   placeholder: string;
   className?: string;
-  options?: any;
-  url?: string;
+  options?: OptionType[];
+  value?: string | number;
+  onChange?: (value: string) => void;
 }) => {
   return (
-    <Select>
+    <Select value={value?.toString()} onValueChange={onChange}>
       <SelectTrigger
-        className={`border-0 rounded-none text-gray-700 h-full focus:ring-0 shadow-none ${className}`}
+        className={` text-gray-700 h-full  focus:ring-0 shadow-none ${className}`}
       >
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent className="bg-[var(--main-green)]">
-        {options &&
-          options.map((option: any) => (
-            <SelectItem key={option?.id} value={option?.id}>
-              {option?.name}
-            </SelectItem>
-          ))}
+        {options.map((option) => (
+          <SelectItem key={option.id} value={option.id.toString()}>
+            {option.name}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   );

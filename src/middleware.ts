@@ -41,7 +41,11 @@ export default async function middleware(request: NextRequest) {
       new URL(`/${routing.defaultLocale}/`, request.url)
     );
   }
-
+  if (token && request?.headers) {
+    const headers = new Headers(request.headers);
+    headers.set("x-current-path", request.nextUrl.pathname);
+    return NextResponse.next({ headers });
+  }
   // تابع الـ intlMiddleware
   const response = await intlMiddleware(request);
 

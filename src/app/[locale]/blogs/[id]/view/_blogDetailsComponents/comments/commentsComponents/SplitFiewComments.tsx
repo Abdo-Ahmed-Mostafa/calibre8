@@ -78,6 +78,7 @@ const SplitFiewComments = ({
               {comment?.replies?.length > 0 && (
                 <div className="ms-10 sm:ms-28">
                   <RepliesComment
+                    getBlog={getBlog}
                     handleDelete={handleDelete}
                     openReplyMenuId={openReplyMenuId}
                     replyingToReplyId={replyingToReplyId}
