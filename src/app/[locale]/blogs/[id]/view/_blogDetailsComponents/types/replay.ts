@@ -2,6 +2,7 @@ export type replayTypes = {
   replyingToReplyId: any;
   handleDelete: any;
   setReplyingToReplyId: any;
+  getBlog: any;
   setOpenReplyMenuId: any;
   openReplyMenuId: any;
   editingReplyId: any;

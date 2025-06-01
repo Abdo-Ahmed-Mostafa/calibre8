@@ -24,6 +24,7 @@ const RepliesComment = ({
   openReplyMenuId,
   replyingToReplyId,
   handleDelete,
+  getBlog,
 }: replayTypes) => {
   const { t } = useMainHook();
 
@@ -35,6 +36,7 @@ const RepliesComment = ({
         return (
           <div key={reply.id} className="mt-4 ">
             <ReplayCard
+              getBlog={getBlog}
               BlogId={BlogId}
               editedContent={editedContent}
               editingReplyId={editingReplyId}

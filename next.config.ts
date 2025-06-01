@@ -6,7 +6,13 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "calibra8-api.doctor-code.net",
+        pathname: "/storage/**",
+      },
+      {
+        protocol: "https",
+        hostname: "calibra8-api.doctor-code.net",
+        pathname: "/images/**",
       },
     ],
   },

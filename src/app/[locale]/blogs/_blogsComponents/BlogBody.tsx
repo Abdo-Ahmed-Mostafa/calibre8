@@ -21,6 +21,7 @@ const BlogBody = ({
   category: any;
   blogs: any;
   onApplyFilter: any;
+  getBlogs: () => void;
 }) => {
   return (
     <div className="mt-10 flex flex-col lg:flex-row  gap-1.5">
@@ -46,6 +47,7 @@ const BlogBody = ({
           onApplyFilter={onApplyFilter}
         />
       )}
+
       {blogs?.length > 0 ? <BlogCardList blogData={blogs} /> : <EmptyPage />}
     </div>
   );

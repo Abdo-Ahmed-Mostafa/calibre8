@@ -22,4 +22,5 @@ export type splitFiewComment = {
   setEditingReplyId: any;
   blogID: any;
   showAllComments: any;
+  getBlog: any;
 };

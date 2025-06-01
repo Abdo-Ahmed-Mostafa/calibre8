@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { CiPhone, CiUser } from "react-icons/ci";
 import { z } from "zod";
-import { MdEmail, MdWc } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import SavButton_Back from "@/components/button/SavButton_Back";
 import axiosInstance from "@/lib/axios/axiosInstance";
 import { showProfileUser } from "@/lib/redux/profileSlice";
