@@ -4,9 +4,12 @@ import { useTranslations } from "next-intl";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { usePathname } from "next/navigation";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { useMainHook } from "@/lib/Hook/useMainHook";
 
 const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
   const pathname = usePathname();
+  const { router, locale } = useMainHook();
   const handleCopyLink = () => {
     const productUrl = `${pathname}/${product.id}/view`;
     navigator.clipboard.writeText(productUrl);
@@ -14,10 +17,10 @@ const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
   };
   const t = useTranslations();
   return (
-    <div className="rounded-2xl border border-[#DDEFD3] p-4 relative shadow-sm col-span-full md:col-span-1  xl:col-span-1 space-y-2 bg-white">
+    <div className="rounded-2xl border border-[#DDEFD3]  relative shadow-sm col-span-full md:col-span-1  xl:col-span-1 space-y-2 bg-white">
       {/* Favorite icon */}
       <div
-        className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10 cursor-pointer"
+        className="absolute top-3 right-3 bg-[#F7FFF2] p-2 rounded-full shadow-md z-10 cursor-pointer"
         onClick={() => {
           toggleFavoirite(product?.id, product?.favorite);
         }}
@@ -25,12 +28,22 @@ const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
         {product?.favorite ? (
           <FaHeart className="w-4 h-4 text-[var(--main)]" />
         ) : (
-          <FaRegHeart />
+          <FaRegHeart className="w-4 h-4 text-[var(--main)]" />
         )}
       </div>
 
       {/* Product Image */}
-      <div className="mb-14">
+      <div className="mb-14  p-4 relative group">
+        <div className="absolute flex top-0 left-0 right-0 bottom-0 opacity-0 group-hover:opacity-100 bg-[#78787899] transition-all duration-500 justify-center items-center ">
+          <div
+            className="size-[50px] rounded-full flex justify-center items-center cursor-pointer bg-[#F7FFF2]"
+            onClick={() => {
+              router.push(`/${locale}/products/${product?.id}/view`);
+            }}
+          >
+            <MdOutlineRemoveRedEye className="text-[35px] text-[#83C55A]" />
+          </div>
+        </div>
         <Image
           src={product?.image}
           alt="Product"
@@ -41,10 +54,12 @@ const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
       </div>
 
       {/* Title */}
-      <h2 className="text-lg font-semibold line-clamp-1">{product?.name}</h2>
+      <h2 className="text-lg font-semibold line-clamp-1 p-4">
+        {product?.name}
+      </h2>
 
       {/* Brand + Type + ID */}
-      <div className="flex justify-between items-center gap-2">
+      <div className="flex justify-between items-center gap-2 p-4">
         <div className="flex flex-wrap items-center gap-1 text-xs text-gray-500">
           <Image
             src={product?.brand?.image}
@@ -69,17 +84,20 @@ const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
       </div>
 
       {/* Description */}
-      <div className="text-xs text-gray-500">
+      <div className="text-xs text-gray-500 px-4">
         <p className="line-clamp-2 pr-1">{product?.description}</p>
       </div>
 
       {/* Arrow */}
-      <div className="flex justify-end cursor-pointer" onClick={handleCopyLink}>
+      <div
+        className="flex justify-end cursor-pointer px-4"
+        onClick={handleCopyLink}
+      >
         <Image src="/leftArow.svg" alt="Arrow" width={30} height={30} />
       </div>
 
       {/* Unit of measurement */}
-      <p className="text-sm font-medium mt-3 text-gray-800">
+      <p className="text-sm font-medium mt-3 text-gray-800 px-4">
         {t("Unit of measurement")}:{" "}
         <span className="font-semibold text-black">
           {product?.unit_of_measure?.unit}
@@ -87,7 +105,7 @@ const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
       </p>
 
       {/* Add to Cart Button */}
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center px-4 pb-4">
         <Button
           onClick={() => {
             addToCart(product?.id);

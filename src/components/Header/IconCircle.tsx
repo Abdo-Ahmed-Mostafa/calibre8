@@ -7,10 +7,10 @@ const IconCircle = ({
   icon: React.ReactNode;
   count?: number;
 }) => (
-  <div className="relative w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-800">
+  <div className="relative !size-[48px] rounded-full bg-gray-100 flex items-center justify-center text-gray-800 cursor-pointer">
     {icon}
     {count && count > 0 && (
-      <span className="absolute -top-[4px] -right-[4px] bg-[#74C044] text-white text-[10px] px-[5px] py-[1px] rounded-full leading-none">
+      <span className="absolute -top-[4px] -right-[4px] bg-[#787878] font-[400] text-[10px] text-white  flex justify-center items-center !size-[15px] rounded-full leading-none">
         {count}
       </span>
     )}

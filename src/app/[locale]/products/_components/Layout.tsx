@@ -50,13 +50,17 @@ const ProductLayout = () => {
         toast.error(t("you are not auth"));
       });
   };
+
   const getFilterProducts = useCallback(() => {
     const params = new URLSearchParams();
 
     if (category?.length > 0)
       params.append("category_id[]", JSON.stringify(category));
-    if (unitsIDS?.length > 0)
-      params.append("unit_id[]", JSON.stringify(unitsIDS));
+    if (unitsIDS?.length > 0) {
+      unitsIDS.forEach((id: string) => {
+        params.append("unit_id[]", id);
+      });
+    }
     if (brandID?.length > 0)
       params.append("brand_id[]", JSON.stringify(brandID));
     if (page) params.append("page", page.toString());

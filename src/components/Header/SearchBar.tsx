@@ -28,12 +28,17 @@ const SearchBar = ({
         onChange={(e) => {
           setHandle(e.target.value);
         }}
-        className={`${classNameInput} border-0 rounded-none rounded-s-3xl border-e border-[var(--main)] focus:ring-0 h-full shadow-none`}
+        className={`${classNameInput} border-0 rounded-none rounded-s-3xl border-e border-white focus:ring-0 h-full shadow-none`}
       />
-      {category && <SelectMenu placeholder="Categoties" />}
+      {category && (
+        <SelectMenu
+          placeholder="Categoties"
+          className="!border-none focus:!outline-none "
+        />
+      )}
       <button
         onClick={handleSearch}
-        className="bg-[var(--main)] h-full rounded-e-xl px-5 flex items-center justify-center text-white cursor-pointer"
+        className="bg-[var(--main)] !w-[100px] h-full rounded-e-xl px-5 flex items-center justify-center text-white cursor-pointer"
       >
         <IoIosSearch size={20} />
       </button>

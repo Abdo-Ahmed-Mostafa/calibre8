@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
-
+import { HiChevronDown } from "react-icons/hi";
 const locales = ["en", "fr"];
 
 const ChangeLanguage = () => {
@@ -17,7 +17,7 @@ const ChangeLanguage = () => {
   const pathname = usePathname();
 
   const parts = pathname.split("/").filter(Boolean);
-  const currentLang = locales.includes(parts[0]) ? parts[0] : "en"; // اللغة الحالية
+  const currentLang = locales.includes(parts[0]) ? parts[0] : "en";
 
   const handleChange = (lang: string) => {
     const newParts = [...parts];
@@ -33,12 +33,28 @@ const ChangeLanguage = () => {
   return (
     <div>
       <Select onValueChange={handleChange} value={currentLang}>
-        <SelectTrigger className="w-[180px] border-none outline-none ring-0 shadow-none focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:outline-none data-[state=open]:ring-0 data-[state=open]:ring-offset-0 data-[state=open]:outline-none">
-          <SelectValue />
+        <SelectTrigger className="cursor-pointer relative w-[180px] border-none outline-none ring-0 shadow-none px-2 pr-3 justify-between items-center flex gap-2 text-black data-[state=open]:bg-transparent [&>svg]:hidden">
+          <div className="flex items-center gap-2">
+            <Image
+              alt="Flag"
+              src={
+                currentLang === "en"
+                  ? "/icons/amercaFlag.svg"
+                  : "/icons/FrenchFlag.svg"
+              }
+              width={24}
+              height={15}
+            />
+            <span className="text-black font-bold capitalize">
+              {currentLang === "en" ? "English" : "Français"}
+            </span>
+            <HiChevronDown className="text-black text-lg transition-transform duration-200 data-[state=open]:rotate-180" />
+          </div>
         </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="en">
-            <div className="flex items-center gap-2">
+
+        <SelectContent className="cursor-pointer">
+          <SelectItem className="cursor-pointer" value="en">
+            <div className="flex items-center gap-2 cursor-pointer">
               <Image
                 alt="English Flag"
                 src={`/icons/amercaFlag.svg`}
@@ -48,8 +64,8 @@ const ChangeLanguage = () => {
               English
             </div>
           </SelectItem>
-          <SelectItem value="fr">
-            <div className="flex items-center gap-2">
+          <SelectItem className="cursor-pointer" value="fr">
+            <div className="flex items-center gap-2 cursor-pointer">
               <Image
                 alt="French Flag"
                 src={`/icons/FrenchFlag.svg`}
