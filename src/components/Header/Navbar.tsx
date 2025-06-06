@@ -31,7 +31,6 @@ const Navbar = () => {
     dispatch(getAllBrands());
     dispatch(getAllCategory());
   }, [dispatch]);
-  console.log("proprofile", brand);
 
   return (
     <div className="border-b shadow-sm text-sm font-normal">
@@ -83,10 +82,14 @@ const Navbar = () => {
         </Link>
         <SelectMenu
           placeholder="Categoties"
-          className="!p-0"
+          className="!p-0 !border-0"
           options={category}
         />
-        <SelectMenu placeholder="Brands" className="!p-0" options={brand} />
+        <SelectMenu
+          placeholder="Brands"
+          className="!p-0 !border-0"
+          options={brand}
+        />
         <Link
           href={`/${locale}/products`}
           className={`hover:text-black transition relative ${

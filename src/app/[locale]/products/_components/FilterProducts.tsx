@@ -145,7 +145,7 @@ const FilterProducts = ({
                   className="cursor-pointer"
                   checked={tempunits.includes(unit?.id)}
                   onChange={() =>
-                    toggleSelection(unit.id, tempBrands, setTempUnits)
+                    toggleSelection(unit.id, tempunits, setTempUnits)
                   }
                 />
               </div>

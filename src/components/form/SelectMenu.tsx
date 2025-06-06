@@ -28,7 +28,7 @@ const SelectMenu = ({
   return (
     <Select value={value?.toString()} onValueChange={onChange}>
       <SelectTrigger
-        className={` text-gray-700 h-full  focus:ring-0 shadow-none ${className}`}
+        className={` text-gray-700 h-full  focus:ring-0 shadow-none  ${className}`}
       >
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>

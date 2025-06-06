@@ -20,8 +20,24 @@ const NavIcons = ({
 
   return (
     <div className="flex items-center gap-5">
-      <IconCircle icon={<Bell className="w-5 h-5" />} count={1} />
-      <IconCircle icon={<Heart className="w-5 h-5" />} count={1} />
+      <IconCircle
+        icon={
+          <Image
+            src={"/icons/mingcute_notification-fill.svg"}
+            alt="notification"
+            width={30}
+            height={30}
+            className="!size-[32px] cursor-pointer"
+          />
+        }
+        count={1}
+      />
+      <IconCircle
+        icon={
+          <Image src={"/icons/heart.svg"} alt="love" width={30} height={30} />
+        }
+        count={1}
+      />
 
       {user ? (
         // لو مسجل دخول، عرض صورة البروفايل وروابطها لصفحة profile
@@ -32,25 +48,69 @@ const NavIcons = ({
               width={32}
               height={32}
               alt={user.name}
-              className="w-8 h-8 rounded-full object-cover cursor-pointer"
+              className="!w-8 !h-8 rounded-full object-cover cursor-pointer"
             />
           ) : (
             // لو مفيش صورة، نعرض الأيقونة User
-            <IconCircle icon={<User className="w-5 h-5" />} />
+            <IconCircle
+              icon={
+                <Image
+                  src={"/icons/user.svg"}
+                  alt="user"
+                  width={30}
+                  height={30}
+                  className="!size-[32px] cursor-pointer"
+                />
+              }
+            />
           )}
         </Link>
       ) : // لو مش مسجل دخول
       !hideUserOnMobile ? (
         <Link href={`/${locale}/login`}>
-          <IconCircle icon={<User className="w-5 h-5" />} />
+          <IconCircle
+            icon={
+              <Image
+                src={"/icons/user.svg"}
+                alt="user"
+                width={30}
+                height={30}
+                className="!size-[32px] cursor-pointer"
+              />
+            }
+          />
         </Link>
       ) : (
-        <Link href={`/${locale}/login`} className="hidden md:inline-flex">
-          <IconCircle icon={<User className="w-5 h-5" />} />
+        <Link
+          href={`/${locale}/login`}
+          className="hidden md:inline-flex cursor-pointer"
+        >
+          <IconCircle
+            icon={
+              <Image
+                src={"/icons/user.svg"}
+                alt="user"
+                width={30}
+                height={30}
+                className="!size-[32px]"
+              />
+            }
+          />
         </Link>
       )}
 
-      <IconCircle icon={<ShoppingCart className="w-5 h-5" />} count={1} />
+      <IconCircle
+        icon={
+          <Image
+            src={"/icons/shopping-cart.svg"}
+            alt="cart"
+            width={20}
+            height={20}
+            className="!size-[32px] cursor-pointer"
+          />
+        }
+        count={1}
+      />
     </div>
   );
 };
