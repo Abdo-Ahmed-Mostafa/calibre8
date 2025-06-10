@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { IoLocationSharp } from "react-icons/io5";
 
-const EmptyPage = ({ text, handleAdd }: any) => {
+const EmptyPage = ({ text, handleAdd }: { text?: string; handleAdd?: any }) => {
   const t = useTranslations("");
   return (
     <div className=" w-full">

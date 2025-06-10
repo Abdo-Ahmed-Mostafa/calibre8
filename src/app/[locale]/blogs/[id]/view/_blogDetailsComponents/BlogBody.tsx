@@ -1,26 +1,19 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
-import toast from "react-hot-toast";
-import { useMainHook } from "@/lib/Hook/useMainHook";
-import { Helmet } from "react-helmet-async";
 const BlogBody = ({
   autherSrcImg,
   name,
   title,
   desc,
-  blog,
 }: {
   autherSrcImg: string;
   name: string;
   title: string;
   desc: string;
-  blog: any;
 }) => {
-  const { t } = useMainHook();
   const pathname = usePathname();
   const currentUrl = typeof window !== "undefined" ? pathname : "";
 
@@ -34,53 +27,9 @@ const BlogBody = ({
     x: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}`,
     whatsapp: `https://wa.me/?text=${encodeURIComponent(currentUrl)}`,
   };
-  // const copyLink = async () => {
-  //   try {
-  //     await navigator.clipboard.writeText(currentUrl);
-  //     toast.success(t("linkCopied"));
-  //   } catch {
-  //     toast.error(t("someThingWentWrongWhileCopyLink"));
-  //   }
-  // };
+
   return (
     <div className="flex flex-col gap-4  mt-5">
-      {blog?.title && (
-        <Helmet>
-          <title>{blog?.title || "عنوان المقال"}</title>
-          <meta
-            name="description"
-            content={blog?.shortDescription || blog?.desc || "وصف المقال"}
-          />
-
-          {/* وسوم LinkedIn و Facebook (Open Graph) */}
-          <meta property="og:title" content={blog?.title} />
-          <meta
-            property="og:description"
-            content={blog?.shortDescription || blog?.desc}
-          />
-          <meta
-            property="og:url"
-            content={`https://yourdomain.com/blog/${blog?.id}`}
-          />
-          <meta property="og:type" content="article" />
-          <meta
-            property="og:image"
-            content={blog?.image || "https://yourdomain.com/default-image.jpg"}
-          />
-
-          {/* Twitter Cards */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={blog?.title} />
-          <meta
-            name="twitter:description"
-            content={blog?.shortDescription || blog?.desc}
-          />
-          <meta
-            name="twitter:image"
-            content={blog?.image || "https://yourdomain.com/default-image.jpg"}
-          />
-        </Helmet>
-      )}
       <div className="flex flex-col gap-5 w-full">
         <h1 className="font-[700] text-[24px] text-[#071200] ">{title}</h1>
         <p className="text-[16px] text-[#4B5744] font-[400]">{desc}</p>

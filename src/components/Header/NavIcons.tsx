@@ -1,5 +1,4 @@
 import IconCircle from "./IconCircle";
-import { Bell, Heart, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import Image from "next/image";
