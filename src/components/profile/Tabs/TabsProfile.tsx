@@ -36,7 +36,7 @@ const TabsProfile = () => {
 
   useEffect(() => {
     if (foundTab) setCurrentTab(foundTab.label);
-  }, [tabQuery]);
+  }, [tabQuery, foundTab]);
 
   const handleTabChange = (label: string) => {
     const tab = profileTabs.find((t) => t.label === label);

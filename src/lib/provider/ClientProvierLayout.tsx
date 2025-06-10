@@ -7,6 +7,7 @@ import Footer from "@/components/Footer/Footer";
 import "@/app/globals.css";
 import "@/app/app.css";
 import { Toaster } from "react-hot-toast";
+import { ReactQueryProvider } from "@/components/wrapTanstack/WrapTanstack";
 
 const ClientProvierLayout = ({ children }: any) => {
   return (
@@ -14,7 +15,7 @@ const ClientProvierLayout = ({ children }: any) => {
       <Provider store={store}>
         <Navbar />
         <Toaster position="top-center" reverseOrder={false} />
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
         <Footer />
       </Provider>
     </div>

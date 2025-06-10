@@ -2,6 +2,8 @@
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "../../../i18n/routing";
+import "swiper/css";
+import "swiper/css/navigation";
 import ClientProvierLayout from "@/lib/provider/ClientProvierLayout";
 export default async function LocaleLayout({
   children,

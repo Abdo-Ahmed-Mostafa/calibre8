@@ -7,7 +7,19 @@ import { usePathname } from "next/navigation";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useMainHook } from "@/lib/Hook/useMainHook";
 
-const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
+const ProductCard = ({
+  product,
+  toggleFavoirite,
+  addToCart,
+  selected,
+  seSelected,
+}: {
+  product?: any;
+  toggleFavoirite?: any;
+  seSelected?: any;
+  selected?: any;
+  addToCart?: any;
+}) => {
   const pathname = usePathname();
   const { router, locale } = useMainHook();
   const handleCopyLink = () => {
@@ -17,7 +29,16 @@ const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
   };
   const t = useTranslations();
   return (
-    <div className="rounded-2xl border border-[#DDEFD3]  relative shadow-sm col-span-full md:col-span-1  xl:col-span-1 space-y-2 bg-white">
+    <div
+      className={`rounded-2xl ${
+        selected && selected
+          ? "border-4  border-[#83C55A]"
+          : "border  border-[#DDEFD3]"
+      }   relative shadow-sm col-span-full md:col-span-1  xl:col-span-1 space-y-2 bg-white`}
+      onClick={() =>
+        seSelected && seSelected((prev: any) => [...prev, product?.id])
+      }
+    >
       {/* Favorite icon */}
       <div
         className="absolute top-3 right-3 bg-[#F7FFF2] p-2 rounded-full shadow-md z-10 cursor-pointer"
@@ -100,7 +121,7 @@ const ProductCard = ({ product, toggleFavoirite, addToCart }: any) => {
       <p className="text-sm font-medium mt-3 text-gray-800 px-4">
         {t("Unit of measurement")}:{" "}
         <span className="font-semibold text-black">
-          {product?.unit_of_measure?.unit}
+          {product?.unit_of_measure?.unit || "-"}
         </span>
       </p>
 

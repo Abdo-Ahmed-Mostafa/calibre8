@@ -3,6 +3,7 @@ import Image from "next/image";
 import FilterProducts from "./FilterProducts";
 import ProductCard from "@/components/card/ProductCard";
 import EmptyPage from "@/components/EmptyPage";
+import { useMainHook } from "@/lib/Hook/useMainHook";
 
 const ProductsBody = ({
   openFilter,
@@ -29,6 +30,7 @@ const ProductsBody = ({
   category: any;
   products: any;
 }) => {
+  const { t } = useMainHook();
   return (
     <div className="mt-10 flex flex-col   gap-5 relative ">
       <button
@@ -69,7 +71,7 @@ const ProductsBody = ({
           })}
         </div>
       ) : (
-        <EmptyPage />
+        <EmptyPage text={t("no products here")} />
       )}
     </div>
   );

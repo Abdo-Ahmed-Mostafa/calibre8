@@ -44,7 +44,6 @@ const ShowBlogDetails = ({
       />
       <div className="px-3 sm:px-8">
         <BlogBody
-          blog={blog}
           title={blog?.title}
           autherSrcImg={blog?.author?.image}
           name={blog?.author?.name}
